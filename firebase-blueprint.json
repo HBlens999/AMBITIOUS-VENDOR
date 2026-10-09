@@ -1,0 +1,249 @@
+{
+  "entities": {
+    "site_settings": {
+      "title": "SiteSettings",
+      "description": "Global website branding, contact information, and metadata",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string", "maxLength": 100 },
+        "tagline": { "type": "string", "maxLength": 200 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 150 },
+        "whatsapp": { "type": "string", "maxLength": 50 },
+        "logoText": { "type": "string", "maxLength": 100 },
+        "seoTitle": { "type": "string", "maxLength": 200 },
+        "seoDescription": { "type": "string", "maxLength": 500 },
+        "canonicalUrl": { "type": "string", "maxLength": 300 }
+      },
+      "required": ["siteName", "phone", "email"]
+    },
+    "hero_settings": {
+      "title": "HeroSettings",
+      "description": "Homepage hero typography, 5-color continuous animation, and landscape layers",
+      "type": "object",
+      "properties": {
+        "headline": { "type": "string", "maxLength": 100 },
+        "color1": { "type": "string", "maxLength": 20 },
+        "color2": { "type": "string", "maxLength": 20 },
+        "color3": { "type": "string", "maxLength": 20 },
+        "color4": { "type": "string", "maxLength": 20 },
+        "color5": { "type": "string", "maxLength": 20 },
+        "duration": { "type": "number" },
+        "glowIntensity": { "type": "number" },
+        "fontSizeRem": { "type": "number" },
+        "letterSpacing": { "type": "string", "maxLength": 20 },
+        "bgImage": { "type": "string", "maxLength": 1000 },
+        "subheading": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "primaryCtaText": { "type": "string", "maxLength": 80 },
+        "primaryCtaLink": { "type": "string", "maxLength": 200 },
+        "secondaryCtaText": { "type": "string", "maxLength": 80 },
+        "secondaryCtaLink": { "type": "string", "maxLength": 200 },
+        "showMist": { "type": "boolean" },
+        "showParticles": { "type": "boolean" },
+        "parallaxIntensity": { "type": "number" }
+      },
+      "required": ["headline", "color1", "color2", "color3", "color4", "color5", "duration", "description"]
+    },
+    "marquee_settings": {
+      "title": "MarqueeSettings",
+      "description": "Continuous right-to-left infinite category ticker",
+      "type": "object",
+      "properties": {
+        "speedSeconds": { "type": "number" },
+        "direction": { "type": "string", "enum": ["left"] },
+        "separator": { "type": "string", "maxLength": 10 },
+        "items": { "type": "array" }
+      },
+      "required": ["speedSeconds", "separator", "items"]
+    },
+    "services": {
+      "title": "ServiceItem",
+      "description": "Creative service offerings (Design, Web, Video, Perfume)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 150 },
+        "slug": { "type": "string", "maxLength": 150 },
+        "category": { "type": "string", "maxLength": 150 },
+        "shortDescription": { "type": "string", "maxLength": 500 },
+        "fullDescription": { "type": "string", "maxLength": 2000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "startingPrice": { "type": "string", "maxLength": 100 },
+        "order": { "type": "number" },
+        "published": { "type": "boolean" },
+        "deliverables": { "type": "array" },
+        "ctaText": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["title", "slug", "category", "shortDescription", "fullDescription", "image", "published"]
+    },
+    "portfolio_projects": {
+      "title": "PortfolioProject",
+      "description": "Showcase creative portfolio pieces",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "videoUrl": { "type": "string", "maxLength": 1000 },
+        "externalUrl": { "type": "string", "maxLength": 1000 },
+        "order": { "type": "number" },
+        "published": { "type": "boolean" },
+        "client": { "type": "string", "maxLength": 150 },
+        "year": { "type": "string", "maxLength": 20 },
+        "tags": { "type": "array" }
+      },
+      "required": ["title", "slug", "category", "description", "image", "published"]
+    },
+    "perfume_products": {
+      "title": "PerfumeProduct",
+      "description": "Luxury artisan fragrance products and inventory specs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "tagline": { "type": "string", "maxLength": 250 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "price": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "enum": ["Available", "Limited Stock", "Made to Order", "Sold Out"] },
+        "category": { "type": "string", "maxLength": 100 },
+        "notes": { "type": "string", "maxLength": 500 },
+        "volume": { "type": "string", "maxLength": 100 },
+        "order": { "type": "number" },
+        "published": { "type": "boolean" },
+        "inquiryLink": { "type": "string", "maxLength": 300 }
+      },
+      "required": ["name", "description", "image", "status", "published"]
+    },
+    "about_content": {
+      "title": "AboutContent",
+      "description": "About page story, mission, vision, and convergence pillars",
+      "type": "object",
+      "properties": {
+        "headline": { "type": "string", "maxLength": 300 },
+        "brandIntro": { "type": "string", "maxLength": 2000 },
+        "missionTitle": { "type": "string", "maxLength": 150 },
+        "missionText": { "type": "string", "maxLength": 1500 },
+        "visionTitle": { "type": "string", "maxLength": 150 },
+        "visionText": { "type": "string", "maxLength": 1500 },
+        "creativePhilosophyTitle": { "type": "string", "maxLength": 150 },
+        "creativePhilosophyText": { "type": "string", "maxLength": 2000 },
+        "intersectionTitle": { "type": "string", "maxLength": 150 },
+        "intersectionText": { "type": "string", "maxLength": 2000 },
+        "studioImage": { "type": "string", "maxLength": 1000 },
+        "corePillars": { "type": "array" }
+      },
+      "required": ["headline", "brandIntro", "missionText", "visionText"]
+    },
+    "media_assets": {
+      "title": "MediaAsset",
+      "description": "Registered media library items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "url": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string", "maxLength": 100 },
+        "alt": { "type": "string", "maxLength": 300 },
+        "size": { "type": "string", "maxLength": 50 },
+        "created_at": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["name", "url", "category", "alt"]
+    },
+    "contact_submissions": {
+      "title": "ContactSubmission",
+      "description": "Customer project inquiries submitted through the contact form",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "created_at": { "type": "string", "maxLength": 100 },
+        "full_name": { "type": "string", "minLength": 2, "maxLength": 150 },
+        "email": { "type": "string", "minLength": 5, "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "service": { "type": "string", "maxLength": 100 },
+        "budget": { "type": "string", "maxLength": 100 },
+        "message": { "type": "string", "minLength": 10, "maxLength": 5000 },
+        "status": { "type": "string", "enum": ["New", "In Progress", "Resolved"] },
+        "internal_notes": { "type": "string", "maxLength": 2000 }
+      },
+      "required": ["full_name", "email", "service", "message", "status"]
+    },
+    "theme_settings": {
+      "title": "ThemeSettings",
+      "description": "Shared color tokens and styling presets",
+      "type": "object",
+      "properties": {
+        "primaryNavy": { "type": "string", "maxLength": 30 },
+        "midnightBlue": { "type": "string", "maxLength": 30 },
+        "mountainBlue": { "type": "string", "maxLength": 30 },
+        "skyBlue": { "type": "string", "maxLength": 30 },
+        "accentYellow": { "type": "string", "maxLength": 30 },
+        "accentCyan": { "type": "string", "maxLength": 30 },
+        "accentLavender": { "type": "string", "maxLength": 30 },
+        "borderRadius": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["primaryNavy", "midnightBlue"]
+    },
+    "admins": {
+      "title": "AdminProfile",
+      "description": "Designated administrator identity with verified privileges",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "enum": ["admin", "super_admin"] },
+        "addedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/site_settings/{docId}": {
+      "schema": "site_settings",
+      "description": "Global website configuration document"
+    },
+    "/hero_settings/{docId}": {
+      "schema": "hero_settings",
+      "description": "Hero section configuration document"
+    },
+    "/marquee_settings/{docId}": {
+      "schema": "marquee_settings",
+      "description": "Marquee categories configuration document"
+    },
+    "/about_content/{docId}": {
+      "schema": "about_content",
+      "description": "About page content document"
+    },
+    "/theme_settings/{docId}": {
+      "schema": "theme_settings",
+      "description": "Theme and design tokens document"
+    },
+    "/services/{serviceId}": {
+      "schema": "services",
+      "description": "Creative services catalog collection"
+    },
+    "/portfolio_projects/{projectId}": {
+      "schema": "portfolio_projects",
+      "description": "Showcase portfolio projects collection"
+    },
+    "/perfume_products/{productId}": {
+      "schema": "perfume_products",
+      "description": "Perfume inventory and products collection"
+    },
+    "/media_assets/{assetId}": {
+      "schema": "media_assets",
+      "description": "Registered media library assets collection"
+    },
+    "/contact_submissions/{submissionId}": {
+      "schema": "contact_submissions",
+      "description": "Client inquiries and contact form submissions collection"
+    },
+    "/admins/{userId}": {
+      "schema": "admins",
+      "description": "Administrator profiles collection for RBAC verification"
+    }
+  }
+}

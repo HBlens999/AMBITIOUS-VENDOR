@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --hero-color-1: #F5C542;
+    --hero-color-2: #FFFFFF;
+    --hero-color-3: #72DFFF;
+    --hero-color-4: #398BFF;
+    --hero-color-5: #B6A4FF;
+    --hero-duration: 12s;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #061C46;
+    color: #F7FAFF;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* 5-Color Seamless Animated Typography */
+@keyframes five-color-cycle {
+  0% {
+    color: var(--hero-color-1, #F5C542);
+    text-shadow: 0 0 24px rgba(245, 197, 66, 0.45);
+  }
+  20% {
+    color: var(--hero-color-2, #FFFFFF);
+    text-shadow: 0 0 28px rgba(255, 255, 255, 0.55);
+  }
+  40% {
+    color: var(--hero-color-3, #72DFFF);
+    text-shadow: 0 0 28px rgba(114, 223, 255, 0.55);
+  }
+  60% {
+    color: var(--hero-color-4, #398BFF);
+    text-shadow: 0 0 28px rgba(57, 139, 255, 0.55);
+  }
+  80% {
+    color: var(--hero-color-5, #B6A4FF);
+    text-shadow: 0 0 28px rgba(182, 164, 255, 0.55);
+  }
+  100% {
+    color: var(--hero-color-1, #F5C542);
+    text-shadow: 0 0 24px rgba(245, 197, 66, 0.45);
+  }
+}
+
+.animate-hero-typography {
+  animation: five-color-cycle var(--hero-duration, 12s) ease-in-out infinite;
+  will-change: color, text-shadow;
+}
+
+/* Continuous Right-to-Left Infinite Marquee */
+@keyframes marquee-scroll-rtl {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-rtl 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}
+
+/* Atmospheric Floating Mist / Clouds */
+@keyframes mist-drift-1 {
+  0% {
+    transform: translate3d(-5%, 0, 0) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(5%, -15px, 0) scale(1.08);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(-5%, 0, 0) scale(1);
+    opacity: 0.35;
+  }
+}
+
+@keyframes mist-drift-2 {
+  0% {
+    transform: translate3d(8%, 10px, 0) scale(1.05);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate3d(-6%, -10px, 0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(8%, 10px, 0) scale(1.05);
+    opacity: 0.3;
+  }
+}
+
+.animate-mist-layer-1 {
+  animation: mist-drift-1 18s ease-in-out infinite;
+}
+
+.animate-mist-layer-2 {
+  animation: mist-drift-2 24s ease-in-out infinite;
+}
+
+/* Floating subtle light particle */
+@keyframes particle-float {
+  0% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 0.2;
+  }
+}
+
+.animate-particle {
+  animation: particle-float 6s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for sleek aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #061C46;
+}
+::-webkit-scrollbar-thumb {
+  background: #1766A5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #72DFFF;
+}

@@ -1,0 +1,119 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default-deny global catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Hardened Global Helpers
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isBootstrappedAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'josepchiemezie42@gmail.com' ||
+        request.auth.token.email == '001ambitious@gmail.com'
+      );
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        isBootstrappedAdmin() ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Validation helper for contact inquiries
+    function isValidSubmission(data) {
+      return data.keys().hasAll(['full_name', 'email', 'service', 'message', 'status']) &&
+        data.full_name is string && data.full_name.size() >= 2 && data.full_name.size() <= 150 &&
+        data.email is string && data.email.size() >= 5 && data.email.size() <= 150 &&
+        data.service is string && data.service.size() <= 100 &&
+        data.message is string && data.message.size() >= 10 && data.message.size() <= 5000 &&
+        data.status is string && data.status in ['New', 'In Progress', 'Resolved'];
+    }
+
+    // 1. Site Settings
+    match /site_settings/{docId} {
+      allow read: if true;
+      allow write: if isValidId(docId) && isAdmin();
+    }
+
+    // 2. Hero Settings
+    match /hero_settings/{docId} {
+      allow read: if true;
+      allow write: if isValidId(docId) && isAdmin();
+    }
+
+    // 3. Marquee Settings
+    match /marquee_settings/{docId} {
+      allow read: if true;
+      allow write: if isValidId(docId) && isAdmin();
+    }
+
+    // 4. About Content
+    match /about_content/{docId} {
+      allow read: if true;
+      allow write: if isValidId(docId) && isAdmin();
+    }
+
+    // 5. Theme Settings
+    match /theme_settings/{docId} {
+      allow read: if true;
+      allow write: if isValidId(docId) && isAdmin();
+    }
+
+    // 6. Services
+    match /services/{serviceId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isValidId(serviceId) && isAdmin();
+    }
+
+    // 7. Portfolio Projects
+    match /portfolio_projects/{projectId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isValidId(projectId) && isAdmin();
+    }
+
+    // 8. Perfume Products
+    match /perfume_products/{productId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isValidId(productId) && isAdmin();
+    }
+
+    // 9. Media Assets
+    match /media_assets/{assetId} {
+      allow read: if true;
+      allow write: if isValidId(assetId) && isAdmin();
+    }
+
+    // 10. Contact Submissions (Client inquiries)
+    match /contact_submissions/{submissionId} {
+      // Public can submit an inquiry (create only) with strict validation
+      allow create: if isValidId(submissionId) && isValidSubmission(incoming());
+      // Only authorized admins can view, update status, or delete inquiries
+      allow read, update, delete: if isValidId(submissionId) && isAdmin();
+    }
+
+    // 11. Admins Collection
+    match /admins/{userId} {
+      allow read: if isValidId(userId) && (request.auth.uid == userId || isAdmin());
+      allow write: if isValidId(userId) && isAdmin();
+    }
+  }
+}
