@@ -36,7 +36,7 @@ export const initialHeroSettings: HeroSettings = {
   glowIntensity: 0.65,
   fontSizeRem: 8.5,
   letterSpacing: '-0.04em',
-  bgImage: '/src/assets/images/hero_blue_mountains_1791546176773.jpg',
+  bgImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=90',
   subheading: 'Strategy · Design · Motion · Fragrance',
   description:
     'A passionate graphic designer and skilled video editor, I bridge the gap between strategy and creativity. I craft cohesive brand identities and produce high-retention video content tailored for modern digital platforms, ensuring every project is visually stunning, purposeful, and results-driven.',
@@ -71,7 +71,7 @@ export const initialServices: ServiceItem[] = [
       'Distinctive visual identities, bespoke brand systems, vector iconography, and high-impact editorial collateral.',
     fullDescription:
       'We craft iconic brand marks, coherent typography systems, packaging design, and modern marketing graphics tailored to communicate distinction and prestige in competitive markets.',
-    image: '/src/assets/images/graphic_design_showcase_1791546187744.jpg',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85',
     startingPrice: 'Custom Quote',
     order: 1,
     published: true,
@@ -93,7 +93,7 @@ export const initialServices: ServiceItem[] = [
       'High-performance, bespoke web applications and interactive landing pages built for modern responsiveness and conversion.',
     fullDescription:
       'From custom responsive interfaces and creative developer portfolios to dynamic CMS-driven platforms, we build sleek digital experiences with uncompromising speed, fluidity, and attention to detail.',
-    image: '/src/assets/images/web_development_showcase_1791546198993.jpg',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85',
     startingPrice: 'Custom Quote',
     order: 2,
     published: true,
@@ -115,7 +115,7 @@ export const initialServices: ServiceItem[] = [
       'Curated artisan fragrances, luxury niche extraits, and memorable scent profiles packaged with sophisticated presentation.',
     fullDescription:
       'Fragrance is an unseen signature of character and taste. We curate, present, and distribute premium, high-sillage perfumes and exclusive scent selections designed to leave an unforgettable impression.',
-    image: '/src/assets/images/perfume_luxury_bottle_1791546209395.jpg',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=85',
     startingPrice: 'Inquire for Catalog',
     order: 3,
     published: true,
@@ -137,7 +137,7 @@ export const initialServices: ServiceItem[] = [
       'Cinematic pacing, color grading, sound design, and high-retention video editing crafted for digital reels and commercial campaigns.',
     fullDescription:
       'Transforming raw footage into hypnotic visual narratives. Specializing in high-retention pacing, narrative structure, audio mastering, sound design effects, and cinematic color correction.',
-    image: '/src/assets/images/video_editing_suite_1791546219495.jpg',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85',
     startingPrice: 'Custom Quote',
     order: 4,
     published: true,
@@ -160,7 +160,7 @@ export const initialPortfolio: PortfolioProject[] = [
     category: 'Graphic Design',
     description:
       'An editorial brand identity suite featuring gold-foil print guidelines, geometric monogram lockups, and luxury packaging layout.',
-    image: '/src/assets/images/graphic_design_showcase_1791546187744.jpg',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85',
     order: 1,
     published: true,
     year: '2026',
@@ -174,7 +174,7 @@ export const initialPortfolio: PortfolioProject[] = [
     category: 'Website Development',
     description:
       'A hyper-responsive digital showcase web application with custom dark navy UI, fluid motion physics, and integrated portfolio management.',
-    image: '/src/assets/images/web_development_showcase_1791546198993.jpg',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85',
     order: 2,
     published: true,
     year: '2026',
@@ -188,7 +188,7 @@ export const initialPortfolio: PortfolioProject[] = [
     category: 'Perfume Vendor',
     description:
       'Art-directed visual campaign and signature launch presentation for the Aura Véris 100ml luxury extrait de parfum.',
-    image: '/src/assets/images/perfume_luxury_bottle_1791546209395.jpg',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=85',
     order: 3,
     published: true,
     year: '2026',
@@ -202,7 +202,7 @@ export const initialPortfolio: PortfolioProject[] = [
     category: 'Video Editing',
     description:
       'Dynamic multi-track narrative edit featuring rhythmic transitions, analog audio textures, and customized atmospheric color grades.',
-    image: '/src/assets/images/video_editing_suite_1791546219495.jpg',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85',
     order: 4,
     published: true,
     year: '2026',
@@ -218,7 +218,7 @@ export const initialPerfumes: PerfumeProduct[] = [
     tagline: 'Warm Amber, Frankincense & Bergamot',
     description:
       'A warm, magnetic scent profile opening with radiant Calabrian bergamot and evolving into royal frankincense, velvety vanilla, and deep cedarwood.',
-    image: '/src/assets/images/perfume_luxury_bottle_1791546209395.jpg',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=85',
     price: 'Contact for Pricing',
     status: 'Available',
     category: 'Eau de Parfum',
@@ -234,7 +234,7 @@ export const initialPerfumes: PerfumeProduct[] = [
     tagline: 'Smoky Vetiver, Leather & Night Lavender',
     description:
       'An enigmatic, nocturnal fragrance capturing misty mountain air, crushed lavender leaves, aged saddle leather, and rich Haitian vetiver.',
-    image: '/src/assets/images/hero_blue_mountains_1791546176773.jpg',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=90',
     price: 'Contact for Pricing',
     status: 'Limited Stock',
     category: 'Extrait de Parfum',
@@ -250,7 +250,7 @@ export const initialPerfumes: PerfumeProduct[] = [
     tagline: 'Creamy Sandalwood, Cardamom & White Musk',
     description:
       'An intoxicating modern classic with smooth Australian sandalwood, cracked green cardamom pods, and a lingering skin musk sillage.',
-    image: '/src/assets/images/graphic_design_showcase_1791546187744.jpg',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85',
     price: 'Contact for Pricing',
     status: 'Available',
     category: 'Perfume Oil / Attar',
@@ -278,7 +278,7 @@ export const initialAboutContent: AboutContent = {
   intersectionTitle: 'The Convergence of Disciplines',
   intersectionText:
     'Why design, code, video, and perfume? Because memorable brands live across multiple dimensions. Graphic design creates the visual archetype; website development builds the interactive home; video editing drives viral digital retention; and luxury fragrance adds an indelible sensory imprint.',
-  studioImage: '/src/assets/images/hero_blue_mountains_1791546176773.jpg',
+  studioImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=90',
   ceoImage: '',
   ceoName: 'CEO & Creative Director',
   ceoTitle: 'Founder, AMBITIOUS VENDOR',
@@ -305,7 +305,7 @@ export const initialMediaAssets: MediaAsset[] = [
   {
     id: 'med-1',
     name: 'Hero Blue Mountains Panoramic',
-    url: '/src/assets/images/hero_blue_mountains_1791546176773.jpg',
+    url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=90',
     category: 'Hero',
     alt: 'Cinematic blue alpine mountains at dusk with misty peaks and glowing horizon',
     size: '1.4 MB',
@@ -314,7 +314,7 @@ export const initialMediaAssets: MediaAsset[] = [
   {
     id: 'med-2',
     name: 'Graphic Design Identity Showcase',
-    url: '/src/assets/images/graphic_design_showcase_1791546187744.jpg',
+    url: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85',
     category: 'Services',
     alt: 'Bespoke brand identity guidelines and gold-foil stationery mockups',
     size: '890 KB',
@@ -323,7 +323,7 @@ export const initialMediaAssets: MediaAsset[] = [
   {
     id: 'med-3',
     name: 'Modern Web Development Mockup',
-    url: '/src/assets/images/web_development_showcase_1791546198993.jpg',
+    url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85',
     category: 'Services',
     alt: 'Desktop monitor and mobile phone displaying modern dark blue website UI',
     size: '950 KB',
@@ -332,7 +332,7 @@ export const initialMediaAssets: MediaAsset[] = [
   {
     id: 'med-4',
     name: 'Luxury Perfume Bottle on Marble',
-    url: '/src/assets/images/perfume_luxury_bottle_1791546209395.jpg',
+    url: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=85',
     category: 'Perfumes',
     alt: 'Aura Véris luxury artisan perfume bottle on midnight blue crystal rock',
     size: '1.1 MB',
@@ -341,7 +341,7 @@ export const initialMediaAssets: MediaAsset[] = [
   {
     id: 'med-5',
     name: 'Cinematic Video Editing Suite',
-    url: '/src/assets/images/video_editing_suite_1791546219495.jpg',
+    url: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85',
     category: 'Services',
     alt: 'Professional video editor working at color grading studio desk',
     size: '1.2 MB',
