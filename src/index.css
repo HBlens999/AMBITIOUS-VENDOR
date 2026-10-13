@@ -192,3 +192,16 @@ html[data-theme] [class*="shadow-[#092A61]"] { --tw-shadow-color: var(--theme-bo
 html[data-theme] input, html[data-theme] textarea, html[data-theme] select { color-scheme: light; }
 html[data-theme] [class*="bg-gradient-to-"] { background-color: var(--theme-bg); }
 @media (prefers-reduced-motion: reduce) { html[data-theme] .animate-marquee-rtl { animation-duration: 60s !important; } }
+
+/* Also recolor semi-transparent utility variants used by overlays and cards. */
+html[data-theme] [class*="bg-[#061C46]/"] { background-color: var(--theme-bg) !important; }
+html[data-theme] [class*="bg-[#092A61]/"] { background-color: var(--theme-surface-2) !important; }
+html[data-theme] [class*="bg-[#1766A5]/"] { background-color: var(--theme-border) !important; }
+html[data-theme] [class*="bg-[#F5C542]/"] { background-color: color-mix(in srgb, var(--theme-accent) 16%, transparent) !important; }
+html[data-theme] [class*="text-[#1766A5]"], html[data-theme] [class*="text-[#398BFF]"] { color: var(--theme-accent-2) !important; }
+html[data-theme="rose"] section[class*="min-h-[92vh]"] img { filter: hue-rotate(285deg) saturate(.72) brightness(1.08); }
+html[data-theme="ocean"] section[class*="min-h-[92vh]"] img { filter: hue-rotate(0deg) saturate(.8) brightness(1.04); }
+html[data-theme="emerald"] section[class*="min-h-[92vh]"] img { filter: hue-rotate(70deg) saturate(.72) brightness(1.06); }
+html[data-theme="violet"] section[class*="min-h-[92vh]"] img { filter: hue-rotate(255deg) saturate(.75) brightness(1.06); }
+html[data-theme="coral"] section[class*="min-h-[92vh]"] img { filter: hue-rotate(325deg) saturate(.75) brightness(1.06); }
+html[data-theme="gold"] section[class*="min-h-[92vh]"] img { filter: sepia(.18) saturate(.78) brightness(1.08); }
