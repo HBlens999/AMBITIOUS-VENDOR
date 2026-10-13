@@ -22,15 +22,16 @@ export const initialSiteSettings: SiteSettings = {
   seoDescription:
     'A passionate creative studio bridging graphic design, responsive website development, high-retention video editing, and exclusive luxury perfumes.',
   canonicalUrl: 'https://ambitiousvendor.com',
+  faviconUrl: '',
 };
 
 export const initialHeroSettings: HeroSettings = {
   headline: 'AMBITIOUS VENDOR',
-  color1: '#F5C542', // Warm golden yellow
+  color1: '#D63384', // Signature rose pink
   color2: '#FFFFFF', // Pure white
-  color3: '#72DFFF', // Icy cyan
-  color4: '#398BFF', // Electric blue
-  color5: '#B6A4FF', // Soft lavender
+  color3: '#F48FB1', // Soft rose
+  color4: '#AD1457', // Deep berry
+  color5: '#FFD6E7' // Blush pink
   duration: 12, // 12 seconds per full color loop
   glowIntensity: 0.65,
   fontSizeRem: 8.5,
@@ -278,6 +279,9 @@ export const initialAboutContent: AboutContent = {
   intersectionText:
     'Why design, code, video, and perfume? Because memorable brands live across multiple dimensions. Graphic design creates the visual archetype; website development builds the interactive home; video editing drives viral digital retention; and luxury fragrance adds an indelible sensory imprint.',
   studioImage: '/src/assets/images/hero_blue_mountains_1791546176773.jpg',
+  ceoImage: '',
+  ceoName: 'CEO & Creative Director',
+  ceoTitle: 'Founder, AMBITIOUS VENDOR',
   corePillars: [
     {
       title: 'Intentional Strategy',
@@ -346,14 +350,15 @@ export const initialMediaAssets: MediaAsset[] = [
 ];
 
 export const initialThemeSettings: ThemeSettings = {
-  primaryNavy: '#061C46',
-  midnightBlue: '#092A61',
-  mountainBlue: '#1766A5',
-  skyBlue: '#71B8E8',
-  accentYellow: '#F5C542',
-  accentCyan: '#72DFFF',
-  accentLavender: '#B6A4FF',
+  primaryNavy: '#FFF7FA',
+  midnightBlue: '#FFFFFF',
+  mountainBlue: '#F3B5D0',
+  skyBlue: '#F48FB1',
+  accentYellow: '#D63384',
+  accentCyan: '#AD1457',
+  accentLavender: '#FFD6E7',
   borderRadius: '16px',
+  preset: 'rose',
 };
 
 export const sampleContactSubmissions: ContactSubmission[] = [
