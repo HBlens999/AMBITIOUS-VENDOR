@@ -34,10 +34,10 @@ export const ServiceCards: React.FC<ServiceCardsProps> = ({ onNavigate }) => {
             <div
               key={service.id}
               onClick={() => onNavigate(`/services#${service.slug}`)}
-              className="group relative flex flex-col justify-between bg-gradient-to-b from-[#092A61]/70 to-[#061C46]/90 border border-[#1766A5]/30 hover:border-[#72DFFF]/60 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#092A61]/50 cursor-pointer"
+              className="service-card group relative flex flex-col justify-between bg-white border border-[#ead3d5] hover:border-[#b66f7d] rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
               {/* Card Image Container */}
-              <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-[#061C46]">
+              <div className="service-card-media relative h-56 sm:h-64 w-full overflow-hidden bg-[#f7e8e8]">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -47,35 +47,35 @@ export const ServiceCards: React.FC<ServiceCardsProps> = ({ onNavigate }) => {
                 <div className="service-card-image-overlay absolute inset-0 bg-gradient-to-t from-[#061C46] via-transparent to-transparent opacity-35" />
 
                 {/* Editorial Number Index */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-2.5 py-1 rounded bg-[#061C46]/80 backdrop-blur-md text-[11px] font-mono font-bold text-[#F5C542] border border-[#1766A5]/40">
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="px-2.5 py-1 rounded bg-[#fffafa] text-[11px] font-mono font-bold text-[#71384b] border border-[#ead3d5]">
                     0{index + 1}
                   </span>
                 </div>
 
                 {/* Action Arrow Indicator */}
-                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#061C46]/80 backdrop-blur-md border border-[#1766A5]/40 flex items-center justify-center text-slate-200 group-hover:bg-[#F5C542] group-hover:text-[#061C46] group-hover:border-[#F5C542] transition-colors">
+                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#fffafa] border border-[#ead3d5] flex items-center justify-center text-[#71384b] group-hover:bg-[#b66f7d] group-hover:text-white group-hover:border-[#b66f7d] transition-colors">
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
 
               {/* Card Content */}
-              <div className="p-6 flex flex-col flex-grow justify-between gap-4">
+              <div className="service-card-content p-6 flex flex-col flex-grow justify-between gap-4 bg-white">
                 <div>
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-[#72DFFF] block mb-1.5">
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-[#71384b] block mb-1.5">
                     {service.category}
                   </span>
-                  <h3 className="font-display text-xl font-bold text-white group-hover:text-[#F5C542] transition-colors">
+                  <h3 className="font-display text-xl font-bold text-[#24171b] group-hover:text-[#b66f7d] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="mt-2.5 text-xs sm:text-sm text-slate-300 line-clamp-3 leading-relaxed">
+                  <p className="mt-2.5 text-xs sm:text-sm text-[#725b61] line-clamp-3 leading-relaxed">
                     {service.shortDescription}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#1766A5]/20 flex items-center justify-between text-xs">
-                  <span className="text-slate-400 font-medium">Starting from:</span>
-                  <span className="font-semibold text-white group-hover:text-[#F5C542] transition-colors">
+                <div className="pt-4 border-t border-[#ead3d5] flex items-center justify-between text-xs">
+                  <span className="text-[#725b61] font-medium">Starting from:</span>
+                  <span className="font-semibold text-[#71384b] group-hover:text-[#b66f7d] transition-colors">
                     {service.startingPrice || 'Custom Quote'}
                   </span>
                 </div>
