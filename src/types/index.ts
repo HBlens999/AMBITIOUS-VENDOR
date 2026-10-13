@@ -9,6 +9,7 @@ export interface SiteSettings {
   seoTitle: string;
   seoDescription: string;
   canonicalUrl: string;
+  faviconUrl?: string;
 }
 
 export interface HeroSettings {
@@ -114,6 +115,9 @@ export interface AboutContent {
   intersectionTitle: string;
   intersectionText: string;
   studioImage: string;
+  ceoImage?: string;
+  ceoName?: string;
+  ceoTitle?: string;
   corePillars: {
     title: string;
     description: string;
@@ -139,4 +143,5 @@ export interface ThemeSettings {
   accentCyan: string;
   accentLavender: string;
   borderRadius: string;
+  preset?: string;
 }
