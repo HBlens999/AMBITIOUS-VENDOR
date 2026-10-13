@@ -63,7 +63,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
     connectionStatus,
     isAdminAuthenticated,
     adminUser,
-    firebaseUser,
+    authUser,
     loginWithGoogle,
     loginAdmin,
     logoutAdmin,
@@ -83,11 +83,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
     | 'submissions'
     | 'theme'
     | 'seo'
-    | 'firebase'
+    | 'supabase'
   >('overview');
 
-  // Auth passcode input state
-  const [passcode, setPasscode] = useState('');
+  // Auth password input state
+  const [password, setPassword] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
@@ -124,11 +124,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError(null);
-    const res = await loginAdmin(passcode, adminEmail);
+    const res = await loginAdmin(password, adminEmail);
     if (!res.success) {
       setAuthError(res.message);
     } else {
-      setPasscode('');
+      setPassword('');
     }
   };
 
@@ -197,8 +197,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                   type="password"
                   autoComplete="current-password"
                   required
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your Supabase Auth password"
                   className="w-full px-4 py-3 rounded-xl bg-[#061C46] border border-[#1766A5]/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#F5C542]"
                 />
@@ -211,7 +211,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                 type="submit"
                 className="w-full py-3 px-4 rounded-full font-semibold uppercase tracking-wider text-xs text-white bg-[#1766A5] hover:bg-[#1f7ecb] transition-all shadow-md cursor-pointer"
               >
-                Unlock with Passcode
+                Sign In with Password
               </button>
             </form>
           </div>
@@ -266,7 +266,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               { id: 'submissions', label: `Inquiries (${submissions.length})`, icon: Mail },
               { id: 'theme', label: 'Design & Colors', icon: Palette },
               { id: 'seo', label: 'SEO & Metadata', icon: Globe },
-              { id: 'firebase', label: 'Supabase Database', icon: Database },
+              { id: 'supabase', label: 'Supabase Database', icon: Database },
             ].map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -450,7 +450,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                 </p>
               </div>
               <button
-                onClick={() => setActiveTab('firebase')}
+                onClick={() => setActiveTab('supabase')}
                 className="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#1766A5] hover:bg-[#1a77c2] text-white whitespace-nowrap"
               >
                 Inspect Supabase Integration
@@ -1802,7 +1802,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
         {/* =========================================================================
             TAB 12: SUPABASE INTEGRATION
             ========================================================================= */}
-        {activeTab === 'firebase' && (
+        {activeTab === 'supabase' && (
           <div className="p-8 rounded-3xl bg-[#061C46] border border-[#1766A5]/40 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
@@ -1856,7 +1856,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                   Current Authenticated Administrator
                 </span>
                 <span className="text-xs font-mono text-emerald-400">
-                  {firebaseUser?.email || adminUser?.email || 'josepchiemezie42@gmail.com'}
+                  {authUser?.email || adminUser?.email || 'josepchiemezie42@gmail.com'}
                 </span>
               </div>
             </div>
