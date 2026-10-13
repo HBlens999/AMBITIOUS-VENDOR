@@ -21,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
   return (
     <section
-      className="relative min-h-[92vh] lg:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#061C46] select-none"
+      className="hero-section relative isolate min-h-[92vh] lg:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#061C46] select-none"
       style={dynamicHeroStyles}
     >
       {/* =========================================================================
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         {/* Subtle Brand Tagline Kicker */}
         <div className="mb-2 sm:mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061C46]/80 border border-[#71B8E8]/30 backdrop-blur-md">
           <Sparkles className="w-3.5 h-3.5 text-[#F5C542]" />
-          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#72DFFF]">
+          <span className="hero-kicker text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] sm:tracking-[0.22em] text-[#72DFFF]">
             {heroSettings.subheading}
           </span>
         </div>
@@ -80,7 +80,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         {/* The Signature Enormous Animated Typography */}
         <div className="w-full text-center max-w-[100vw] overflow-hidden px-2">
           <h1
-            className="font-display font-black tracking-tighter uppercase select-none animate-hero-typography leading-[0.88] drop-shadow-2xl"
+            className="hero-title font-display font-black tracking-tighter uppercase select-none animate-hero-typography leading-[0.88]"
             style={{
               fontSize: 'clamp(2.75rem, 10.5vw, 10.5rem)',
               letterSpacing: heroSettings.letterSpacing,
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           {/* Introductory Description from Brief */}
           <div className="lg:col-span-7">
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl text-balance drop-shadow-md">
+            <p className="hero-description text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl text-balance">
               {heroSettings.description}
             </p>
           </div>
