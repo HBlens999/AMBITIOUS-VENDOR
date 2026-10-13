@@ -26,23 +26,23 @@
 @keyframes five-color-cycle {
   0% {
     color: var(--hero-color-1, #F5C542);
-    text-shadow: 0 0 24px rgba(245, 197, 66, 0.45);
+    text-shadow: 0 0 24px color-mix(in srgb, var(--theme-accent, #D63384) 45%, transparent);
   }
   20% {
     color: var(--hero-color-2, #FFFFFF);
-    text-shadow: 0 0 28px rgba(255, 255, 255, 0.55);
+    text-shadow: 0 0 28px color-mix(in srgb, var(--theme-highlight, #F48FB1) 55%, transparent);
   }
   40% {
     color: var(--hero-color-3, #72DFFF);
-    text-shadow: 0 0 28px rgba(114, 223, 255, 0.55);
+    text-shadow: 0 0 28px color-mix(in srgb, var(--theme-highlight, #F48FB1) 55%, transparent);
   }
   60% {
     color: var(--hero-color-4, #398BFF);
-    text-shadow: 0 0 28px rgba(57, 139, 255, 0.55);
+    text-shadow: 0 0 28px color-mix(in srgb, var(--theme-accent-2, #AD1457) 55%, transparent);
   }
   80% {
     color: var(--hero-color-5, #B6A4FF);
-    text-shadow: 0 0 28px rgba(182, 164, 255, 0.55);
+    text-shadow: 0 0 28px color-mix(in srgb, var(--theme-highlight, #F48FB1) 55%, transparent);
   }
   100% {
     color: var(--hero-color-1, #F5C542);
