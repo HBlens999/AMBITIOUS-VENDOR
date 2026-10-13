@@ -5,7 +5,7 @@ import { SiteSettings, HeroSettings, MarqueeSettings, ServiceItem, PortfolioProj
 import { initialSiteSettings, initialHeroSettings, initialMarqueeSettings, initialServices, initialPortfolio, initialPerfumes, initialAboutContent, initialMediaAssets, initialThemeSettings } from '../data/initialData';
 
 interface AdminUser { email: string; role: string; photoURL?: string; uid?: string; }
-export interface SupabaseConnectionInfo { isConfigured: boolean; projectId: string; firestoreDatabaseId: string; authDomain: string; mode: 'supabase_connected' | 'local_managed_store'; message: string; }
+export interface SupabaseConnectionInfo { isConfigured: boolean; projectId: string; databaseLabel: string; authDomain: string; mode: 'supabase_connected' | 'local_managed_store'; message: string; }
 interface DataContextType {
  siteSettings: SiteSettings; heroSettings: HeroSettings; marqueeSettings: MarqueeSettings; services: ServiceItem[]; portfolio: PortfolioProject[]; perfumes: PerfumeProduct[]; aboutContent: AboutContent; mediaAssets: MediaAsset[]; themeSettings: ThemeSettings; submissions: ContactSubmission[]; connectionStatus: SupabaseConnectionInfo; isAdminAuthenticated: boolean; adminUser: AdminUser | null; authUser: User | null;
  updateSiteSettings:(d:Partial<SiteSettings>)=>Promise<void>; updateHeroSettings:(d:Partial<HeroSettings>)=>Promise<void>; updateMarqueeSettings:(d:Partial<MarqueeSettings>)=>Promise<void>;
@@ -20,7 +20,7 @@ const Ctx=createContext<DataContextType|undefined>(undefined);
 const ADMINS=['josepchiemezie42@gmail.com','001ambitious@gmail.com'];
 const cached=<T,>(key:string,fallback:T):T=>{try{const s=localStorage.getItem('av_'+key);return s?JSON.parse(s):fallback;}catch{return fallback;}};
 const adminFor=(u:User|null):AdminUser|null=>u?.email&&ADMINS.includes(u.email.toLowerCase())?{email:u.email,role:'Super Administrator',photoURL:u.user_metadata?.avatar_url,uid:u.id}:null;
-const status=():SupabaseConnectionInfo=>{const s=getSupabaseStatus();return {isConfigured:s.isConfigured,projectId:s.url||'Not configured',firestoreDatabaseId:'Supabase PostgreSQL',authDomain:s.url||'Not configured',mode:s.mode,message:s.message};};
+const status=():SupabaseConnectionInfo=>{const s=getSupabaseStatus();return {isConfigured:s.isConfigured,projectId:s.url||'Not configured',databaseLabel:'Supabase PostgreSQL',authDomain:s.url||'Not configured',mode:s.mode,message:s.message};};
 export const DataProvider:React.FC<{children:ReactNode}>=({children})=>{
  const [siteSettings,Ssite]=useState<SiteSettings>(()=>cached('site_settings',initialSiteSettings));
  const [heroSettings,Sh]=useState<HeroSettings>(()=>cached('hero_settings',initialHeroSettings));
