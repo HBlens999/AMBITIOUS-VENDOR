@@ -37,8 +37,8 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
     <header
       className={`site-header-layer fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#061C46]/90 backdrop-blur-md border-b border-[#1766A5]/30 py-3.5 shadow-lg shadow-[#061C46]/50'
-          : 'bg-gradient-to-b from-[#061C46]/80 via-[#061C46]/40 to-transparent py-5'
+          ? 'bg-[#fffafa] border-b border-[#ead3d5] py-3.5'
+          : 'bg-[#fffafa] border-b border-[#ead3d5] py-5'
       }`}
     >
       <div className="relative z-[1] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +46,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
           {/* Zone 1: Single text element Brand Wordmark */}
           <button
             onClick={() => handleNavClick('/')}
-            className="group text-left text-lg sm:text-xl font-black tracking-wider uppercase text-white hover:text-[#72DFFF] transition-colors whitespace-nowrap shrink-0 flex items-center gap-2"
+            className="site-wordmark group text-left text-lg sm:text-xl font-black tracking-wider uppercase text-[#71384b] hover:text-[#b66f7d] transition-colors whitespace-nowrap shrink-0 flex items-center gap-2"
           >
             <span className="font-display font-extrabold">{siteSettings.logoText || 'AMBITIOUS VENDOR'}</span>
             {isAdminAuthenticated && (
@@ -55,7 +55,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
           </button>
 
           {/* Zone 2: 4 Clean Single-line Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-slate-200">
+          <nav className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#71384b]">
             {navLinks.map((link) => {
               const isActive = currentPath === link.path;
               return (
@@ -64,8 +64,8 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
                   onClick={() => handleNavClick(link.path)}
                   className={`relative py-1 transition-colors whitespace-nowrap shrink-0 tracking-widest ${
                     isActive
-                      ? 'text-[#F5C542] font-bold'
-                      : 'text-slate-300 hover:text-white'
+                      ? 'text-[#71384b] font-bold'
+                      : 'text-[#725b61] hover:text-[#b66f7d]'
                   }`}
                 >
                   {link.name}
@@ -83,8 +83,8 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
               onClick={() => handleNavClick('/admin')}
               className={`p-2 rounded-lg text-xs font-medium transition-all ${
                 currentPath === '/admin'
-                  ? 'bg-[#1766A5] text-white'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-[#092A61]/60'
+                  ? 'bg-[#71384b] text-white'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-[#f7e8e8]'
               }`}
               title="Admin Dashboard"
             >
@@ -92,7 +92,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
             </button>
             <button
               onClick={() => handleNavClick('/contact')}
-              className="group inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#061C46] bg-[#F5C542] hover:bg-[#ffd666] active:scale-[0.98] rounded-full transition-all shadow-md shadow-[#F5C542]/20 whitespace-nowrap shrink-0"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#b66f7d] hover:bg-[#a55d6d] active:scale-[0.98] rounded-full transition-all shadow-md shadow-[#F5C542]/20 whitespace-nowrap shrink-0"
             >
               <span>Let's Work Together</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -121,7 +121,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="relative z-[1] md:hidden bg-[#061C46]/98 border-b border-[#1766A5]/40 px-6 py-6 backdrop-blur-xl animate-in slide-in-from-top-4 duration-200">
+        <div className="relative z-[1] md:hidden bg-[#fffafa] border-b border-[#ead3d5] px-6 py-6  animate-in slide-in-from-top-4 duration-200">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => {
               const isActive = currentPath === link.path;
@@ -137,7 +137,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
                 </button>
               );
             })}
-            <div className="pt-4 border-t border-[#1766A5]/30 flex flex-col gap-3">
+            <div className="pt-4 border-t border-[#ead3d5] flex flex-col gap-3">
               <button
                 onClick={() => handleNavClick('/contact')}
                 className="w-full flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#061C46] bg-[#F5C542] rounded-full shadow-md"
@@ -147,7 +147,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
               </button>
               <button
                 onClick={() => handleNavClick('/admin')}
-                className="w-full flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold text-slate-300 hover:text-white bg-[#092A61]/80 rounded-full"
+                className="w-full flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold text-slate-300 hover:text-white bg-[#f7e8e8] rounded-full"
               >
                 <Shield className="w-3.5 h-3.5" />
                 <span>Admin Dashboard</span>
