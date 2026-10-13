@@ -6,58 +6,43 @@ interface ServiceMarqueeProps {
 }
 
 export const ServiceMarquee: React.FC<ServiceMarqueeProps> = ({ onSelectCategory }) => {
-  const { marqueeSettings } = useData();
-
-  const items = marqueeSettings.items || [
-    'GRAPHIC DESIGN',
-    'WEBSITE DEVELOPMENT',
-    'PERFUME VENDOR',
-    'VIDEO EDITING',
-  ];
-
-  // We repeat the array 4 times to ensure no blank gap regardless of ultra-wide 4K viewports
+  const { marqueeSettings, services } = useData();
+  const items = (marqueeSettings.items?.length ? marqueeSettings.items : services.map((service) => service.title))
+    .map((label) => {
+      const normalized = label.trim().toLowerCase();
+      const service = services.find((entry) =>
+        entry.title.trim().toLowerCase() === normalized ||
+        entry.slug.trim().toLowerCase() === normalized.replace(/\s+/g, '-') ||
+        entry.category.trim().toLowerCase() === normalized
+      );
+      return { label, service };
+    });
   const repeatedItems = [...items, ...items, ...items, ...items];
 
-  const handleItemClick = (item: string) => {
-    if (onSelectCategory) {
-      onSelectCategory(item);
-    }
-  };
-
   return (
-    <div
-      className="relative w-full overflow-hidden border-y border-[#1766A5]/30 bg-gradient-to-r from-[#061C46] via-[#092A61] to-[#061C46] py-5 sm:py-6 shadow-inner"
-      aria-label="Continuous Service Categories Marquee"
-    >
-      {/* Subtle edge fades for smooth visual entry/exit */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#061C46] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#061C46] to-transparent z-10 pointer-events-none" />
-
-      {/* Continuously moving track: Right-To-Left */}
-      <div
-        className="animate-marquee-rtl flex items-center gap-8 sm:gap-14 whitespace-nowrap cursor-pointer select-none"
-        style={{
-          animationDuration: `${marqueeSettings.speedSeconds || 26}s`,
-        }}
-      >
-        {repeatedItems.map((item, index) => (
-          <div
-            key={`${item}-${index}`}
-            onClick={() => handleItemClick(item)}
-            className="group inline-flex items-center gap-8 sm:gap-14 transition-opacity hover:opacity-100"
+    <section className="relative w-full overflow-hidden border-y border-[#1766A5]/30 bg-gradient-to-r from-[#061C46] via-[#092A61] to-[#061C46] py-6 sm:py-8 shadow-inner" aria-label="Featured services">
+      <div className="absolute inset-y-0 left-0 w-10 sm:w-24 bg-gradient-to-r from-[#061C46] to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-10 sm:w-24 bg-gradient-to-l from-[#061C46] to-transparent z-10 pointer-events-none" />
+      <div className="animate-marquee-rtl flex w-max items-start gap-5 sm:gap-8 whitespace-nowrap select-none" style={{ animationDuration: `${marqueeSettings.speedSeconds || 26}s` }}>
+        {repeatedItems.map(({ label, service }, index) => (
+          <button
+            type="button"
+            key={`${label}-${index}`}
+            onClick={() => onSelectCategory?.(label)}
+            className="group w-36 sm:w-48 shrink-0 text-left whitespace-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F5C542] rounded-2xl"
+            aria-label={`Explore ${label}`}
           >
-            <span className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-widest text-slate-100 group-hover:text-[#F5C542] transition-colors duration-200">
-              {item}
+            <span className="block overflow-hidden rounded-2xl border border-[#1766A5]/35 bg-[#092A61] aspect-[4/3] shadow-lg transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+              {service?.image ? (
+                <img src={service.image} alt={service.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              ) : (
+                <span className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#F8BBD0] to-[#D63384] px-3 text-center text-sm font-bold text-white">{label}</span>
+              )}
             </span>
-            <span
-              className="text-xs sm:text-sm text-[#72DFFF] group-hover:text-[#F5C542] group-hover:rotate-45 transition-all duration-300"
-              aria-hidden="true"
-            >
-              {marqueeSettings.separator || '✦'}
-            </span>
-          </div>
+            <span className="mt-3 block text-center text-xs sm:text-sm font-extrabold uppercase tracking-[0.12em] text-white group-hover:text-[#F5C542] transition-colors">{service?.title || label}</span>
+          </button>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
