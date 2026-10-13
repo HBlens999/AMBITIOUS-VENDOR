@@ -1674,8 +1674,50 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
         {activeTab === 'theme' && (
           <div className="p-8 rounded-3xl bg-[#061C46] border border-[#1766A5]/40 space-y-6">
             <h3 className="font-display text-lg font-bold text-white">
-              Shared Theme & Palette Tokens
+              Website Color Scheme Presets
             </h3>
+            <p className="text-sm text-slate-300">Choose a preset to recolor the whole website immediately. Rose Pink & White is the default. Your selection is saved in Supabase.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { id: 'rose', name: 'Rose Pink & White', bg: '#FFF7FA', surface: '#FFFFFF', border: '#F3B5D0', accent: '#D63384', accent2: '#AD1457', highlight: '#F48FB1', text: '#3A1730', muted: '#77586A' },
+                { id: 'ocean', name: 'Ocean Blue & White', bg: '#F4F8FF', surface: '#FFFFFF', border: '#B7CEFA', accent: '#2563EB', accent2: '#1D4ED8', highlight: '#60A5FA', text: '#13294B', muted: '#5B6F8F' },
+                { id: 'emerald', name: 'Emerald & Ivory', bg: '#F3FBF7', surface: '#FFFFFF', border: '#A7E1C4', accent: '#059669', accent2: '#047857', highlight: '#6EE7B7', text: '#12382C', muted: '#55776A' },
+                { id: 'violet', name: 'Royal Violet & White', bg: '#FAF7FF', surface: '#FFFFFF', border: '#D0BDF8', accent: '#7C3AED', accent2: '#6D28D9', highlight: '#C4B5FD', text: '#2F1C50', muted: '#76648F' },
+                { id: 'coral', name: 'Coral Sunset & Cream', bg: '#FFF7F3', surface: '#FFFFFF', border: '#F8C0AA', accent: '#EA580C', accent2: '#C2410C', highlight: '#FDBA8C', text: '#482315', muted: '#8A6251' },
+                { id: 'gold', name: 'Luxe Gold & Ivory', bg: '#FFFBF2', surface: '#FFFFFF', border: '#E8D29A', accent: '#A16207', accent2: '#854D0E', highlight: '#E9C46A', text: '#3C2D12', muted: '#7C6A45' },
+              ].map((preset) => (
+                <button
+                  type="button"
+                  key={preset.id}
+                  onClick={() => {
+                    updateThemeSettings({
+                      preset: preset.id,
+                      primaryNavy: preset.bg,
+                      midnightBlue: preset.surface,
+                      mountainBlue: preset.border,
+                      skyBlue: preset.highlight,
+                      accentYellow: preset.accent,
+                      accentCyan: preset.accent2,
+                      accentLavender: preset.highlight,
+                    });
+                    triggerSaveNotification(preset.name + ' applied');
+                  }}
+                  className={`text-left rounded-2xl p-4 border-2 transition-all ${(themeSettings.preset || 'rose') === preset.id ? 'border-[#F5C542] shadow-lg' : 'border-[#1766A5]/30 hover:border-[#F5C542]/60'}`}
+                  style={{ backgroundColor: preset.bg, color: preset.text }}
+                >
+                  <div className="flex gap-2 mb-3">
+                    {[preset.bg, preset.surface, preset.accent, preset.accent2, preset.highlight].map((color) => <span key={color} className="h-7 flex-1 rounded-lg border border-black/10" style={{ backgroundColor: color }} />)}
+                  </div>
+                  <span className="block text-sm font-bold">{preset.name}</span>
+                  <span className="block text-[11px] mt-1 opacity-70">{(themeSettings.preset || 'rose') === preset.id ? 'Currently active' : 'Click to apply'}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="pt-3 border-t border-[#1766A5]/30">
+              <h4 className="font-display text-sm font-bold text-white mb-1">Advanced Color Tokens</h4>
+              <p className="text-xs text-slate-300 mb-4">Preset selection controls the site-wide theme. These stored color tokens remain available for custom branding.</p>
+            </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div>
