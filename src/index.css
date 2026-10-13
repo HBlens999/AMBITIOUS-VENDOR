@@ -793,3 +793,15 @@ html[data-theme] main [class*="shadow-"] {
   .elemental-ice-shards,
   .hero-section .hero-title { animation-duration: 64s !important; }
 }
+
+
+/* Final specificity override: keep real photographs at their original color and contrast. */
+html[data-theme="rose"] section[class*="min-h-[92vh]"] img,
+html[data-theme="ocean"] section[class*="min-h-[92vh]"] img,
+html[data-theme="emerald"] section[class*="min-h-[92vh]"] img,
+html[data-theme="violet"] section[class*="min-h-[92vh]"] img,
+html[data-theme="coral"] section[class*="min-h-[92vh]"] img,
+html[data-theme="gold"] section[class*="min-h-[92vh]"] img {
+  filter: none !important;
+  opacity: 1 !important;
+}
