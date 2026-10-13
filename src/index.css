@@ -805,3 +805,142 @@ html[data-theme="gold"] section[class*="min-h-[92vh]"] img {
   filter: none !important;
   opacity: 1 !important;
 }
+
+
+/* FINAL BRAND POLISH — enforce the blush/ivory/berry palette on every route. */
+:root {
+  --theme-bg: #fffafa !important;
+  --theme-surface: #ffffff !important;
+  --theme-surface-2: #f7e8e8 !important;
+  --theme-border: #ead3d5 !important;
+  --theme-accent: #b66f7d !important;
+  --theme-accent-2: #71384b !important;
+  --theme-highlight: #dca7ae !important;
+  --theme-text: #24171b !important;
+  --theme-muted: #725b61 !important;
+}
+body, #root { background: #fffafa !important; color: #24171b !important; }
+.site-header-layer, .site-header-layer > div { background: #fffafa !important; }
+.site-header-layer::before { display: none !important; }
+.site-wordmark,
+.site-header-layer .site-wordmark,
+.site-header-layer .site-wordmark span {
+  color: #71384b !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #71384b !important;
+  font-weight: 900 !important;
+}
+.site-header-layer nav button,
+.site-header-layer > div button { color: #71384b !important; }
+.site-header-layer nav button:hover,
+.site-header-layer > div button:hover { color: #b66f7d !important; }
+.site-header-layer button[aria-label="Toggle navigation menu"] { color: #71384b !important; }
+.site-footer-layer { background: #71384b !important; color: #fffafa !important; }
+.site-footer-layer::before { display: none !important; }
+.site-footer-layer, .site-footer-layer * { text-shadow: none !important; }
+.site-footer-layer input { background: #fffafa !important; color: #24171b !important; }
+html[data-theme] main { background-color: #fffafa; color: #24171b; }
+html[data-theme] main h1,
+html[data-theme] main h2,
+html[data-theme] main h3,
+html[data-theme] main h4 { color: #71384b; }
+html[data-theme] main p { color: #725b61; }
+html[data-theme] main [class*="bg-[#061C46]"],
+html[data-theme] main [class*="bg-[#092A61]"],
+html[data-theme] main [class*="bg-[#1766A5]"] { background-color: #f7e8e8 !important; }
+html[data-theme] main [class*="text-white"],
+html[data-theme] main [class*="text-slate-100"],
+html[data-theme] main [class*="text-slate-200"],
+html[data-theme] main [class*="text-slate-300"] { color: #24171b !important; }
+html[data-theme] main [class*="border-[#1766A5]"],
+html[data-theme] main [class*="border-[#71B8E8]"],
+html[data-theme] main [class*="border-[#72DFFF]"] { border-color: #ead3d5 !important; }
+html[data-theme] main [class*="bg-[#F5C542]"] { background-color: #b66f7d !important; color: #fffafa !important; }
+html[data-theme] main [class*="text-[#F5C542]"],
+html[data-theme] main [class*="text-[#72DFFF]"],
+html[data-theme] main [class*="text-[#398BFF]"] { color: #71384b !important; }
+
+/* Service cards: photos remain full-color; every caption sits on a solid ivory panel. */
+.service-card { background: #fff !important; border: 1px solid #ead3d5 !important; box-shadow: none !important; }
+.service-card-media { background: #f7e8e8 !important; }
+.service-card-image { opacity: 1 !important; filter: none !important; }
+.service-card-image-overlay {
+  opacity: .24 !important;
+  background: linear-gradient(0deg, rgba(36,23,27,.5), transparent 52%) !important;
+}
+.service-card-content { background: #fff !important; color: #24171b !important; }
+.service-card-content h3 { color: #71384b !important; }
+.service-card-content p { color: #725b61 !important; }
+.service-card-content span { color: #71384b; }
+.service-card-content .border-t { border-color: #ead3d5 !important; }
+
+/* Hero: fixed ivory/blush environment. Only the headline glow cycles; no scene color changes. */
+.hero-section { background: #24171b !important; color: #fffafa; }
+.hero-section::before { display: none !important; animation: none !important; }
+.hero-section .hero-background { opacity: 1 !important; }
+.hero-section .hero-background-image {
+  opacity: .42 !important;
+  filter: saturate(.72) brightness(.48) !important;
+}
+.hero-section .hero-background > div:first-of-type,
+.hero-section .hero-background > div:last-of-type {
+  background: linear-gradient(180deg, rgba(36,23,27,.56), rgba(36,23,27,.76)) !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+.elemental-atmosphere { display: none !important; animation: none !important; }
+.hero-section .hero-title {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-stroke: 1px rgba(255,255,255,.35) !important;
+  animation: av-visible-neon-glow 8s steps(1,end) infinite !important;
+  text-shadow: 0 0 2px currentColor, 0 0 12px currentColor, 0 0 24px currentColor, 0 0 42px currentColor !important;
+}
+@keyframes av-visible-neon-glow {
+  0%, 24% {
+    color: #fff2d7 !important; -webkit-text-fill-color: #fff2d7 !important;
+    text-shadow: 0 0 2px #fff2d7, 0 0 8px #ff5a2a, 0 0 18px #ff3b18, 0 0 36px #e51c12, 0 0 58px #9e140e !important;
+  }
+  25%, 49% {
+    color: #e9fcff !important; -webkit-text-fill-color: #e9fcff !important;
+    text-shadow: 0 0 2px #fff, 0 0 9px #b8f5ff, 0 0 20px #45d9ff, 0 0 38px #1696ff, 0 0 56px #0d5baf !important;
+  }
+  50%, 74% {
+    color: #f5ffff !important; -webkit-text-fill-color: #f5ffff !important;
+    text-shadow: 0 0 2px #fff, 0 0 8px #b6f5ff, 0 0 18px #4bdcff, 0 0 32px #4bdcff, 0 0 50px #1b70c9 !important;
+  }
+  75%, 100% {
+    color: #fff1f5 !important; -webkit-text-fill-color: #fff1f5 !important;
+    text-shadow: 0 0 2px #fff1f5, 0 0 10px #e9a1b0, 0 0 22px #c56b83, 0 0 42px #9b3d5a !important;
+  }
+}
+.hero-section .hero-description {
+  background: #fffafa !important;
+  color: #24171b !important;
+  border-left: 4px solid #b66f7d !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+.hero-section .hero-kicker {
+  background: #fffafa !important;
+  color: #71384b !important;
+  border: 1px solid #ead3d5 !important;
+  text-shadow: none !important;
+}
+.hero-section button {
+  background: #b66f7d !important;
+  color: #fffafa !important;
+  border: 1px solid #b66f7d !important;
+  box-shadow: none !important;
+}
+.hero-section button:hover { background: #71384b !important; }
+
+/* Override every previous animation's scene-tinting and blur filters. */
+.hero-section .hero-background img,
+.hero-section img { filter: none; }
+.hero-section .hero-background-image { filter: saturate(.72) brightness(.48) !important; }
+html[data-theme] [class*="backdrop-blur"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
