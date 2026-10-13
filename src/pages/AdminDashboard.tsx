@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../context/DataContext';
+import { ImageUploadField } from '../components/ImageUploadField';
 import { ServiceItem, PortfolioProject, PerfumeProduct, ContactSubmission } from '../types';
 import {
   LayoutDashboard,
@@ -493,6 +494,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                 Configure Enormous AMBITIOUS VENDOR Typography
               </h3>
 
+              <ImageUploadField id="hero_bg_image" label="Hero Background Image" value={heroSettings.bgImage} onChange={(url) => { updateHeroSettings({ bgImage: url }); triggerSaveNotification('Hero background image updated'); }} hint="Stored in Supabase Storage, not in the website build." />
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">
@@ -853,15 +856,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Image URL</label>
-                    <input
-                      type="text"
-                      defaultValue={editingService?.image || ''}
-                      id="svc_image"
-                      className="w-full px-3 py-2 rounded-lg bg-[#061C46] border border-[#1766A5]/50 text-white text-xs"
-                    />
-                  </div>
+                  <ImageUploadField id="svc_image" label="Service Image" value={editingService?.image || ''} hint="Upload a service image to Supabase Storage, or paste an existing image URL." />
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-300 mb-1">Starting Price</label>
@@ -1065,15 +1060,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                     </select>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Image URL</label>
-                    <input
-                      type="text"
-                      defaultValue={editingProject?.image || ''}
-                      id="proj_image"
-                      className="w-full px-3 py-2 rounded-lg bg-[#061C46] border border-[#1766A5]/50 text-white text-xs"
-                    />
-                  </div>
+                  <ImageUploadField id="proj_image" label="Portfolio Cover Image" value={editingProject?.image || ''} hint="Upload a project cover image or paste an existing image URL." />
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-300 mb-1">Client / Year</label>
@@ -1263,15 +1250,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Image URL</label>
-                    <input
-                      type="text"
-                      defaultValue={editingPerfume?.image || ''}
-                      id="perf_image"
-                      className="w-full px-3 py-2 rounded-lg bg-[#061C46] border border-[#1766A5]/50 text-white text-xs"
-                    />
-                  </div>
+                  <ImageUploadField id="perf_image" label="Perfume Product Image" value={editingPerfume?.image || ''} hint="Upload a product photo or paste an existing image URL." />
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-300 mb-1">Status</label>
@@ -1425,6 +1404,21 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               About Page Headings & Copy
             </h3>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <ImageUploadField id="about_studio_image" label="About Page / Studio Image" value={aboutContent.studioImage} onChange={(url) => { updateAboutContent({ studioImage: url }); triggerSaveNotification('About image updated'); }} />
+              <ImageUploadField id="about_ceo_image" label="CEO / Founder Portrait" value={aboutContent.ceoImage || ''} onChange={(url) => { updateAboutContent({ ceoImage: url }); triggerSaveNotification('CEO portrait updated'); }} hint="This image will appear in the CEO showcase on the About page." />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">CEO / Founder Name</label>
+                <input type="text" value={aboutContent.ceoName || ''} onChange={(e) => updateAboutContent({ ceoName: e.target.value })} className="w-full px-4 py-2.5 rounded-xl bg-[#092A61] border border-[#1766A5]/50 text-white text-sm" placeholder="Enter the CEO's name" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">CEO Title</label>
+                <input type="text" value={aboutContent.ceoTitle || ''} onChange={(e) => updateAboutContent({ ceoTitle: e.target.value })} className="w-full px-4 py-2.5 rounded-xl bg-[#092A61] border border-[#1766A5]/50 text-white text-sm" placeholder="Founder & CEO" />
+              </div>
+            </div>
+
             <div>
               <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">
                 About Headline
@@ -1515,13 +1509,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                 Add Image / Media Asset
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <input
-                  type="text"
-                  placeholder="Asset URL (e.g. /src/assets/images/...)"
-                  value={newMediaUrl}
-                  onChange={(e) => setNewMediaUrl(e.target.value)}
-                  className="px-3 py-2 rounded-xl bg-[#092A61] border border-[#1766A5]/50 text-white text-xs"
-                />
+                <div className="sm:col-span-2">
+                  <ImageUploadField id="media_asset_url" label="Upload Media Asset" value={newMediaUrl} onChange={setNewMediaUrl} hint="Uploads are stored in the Supabase media bucket." />
+                </div>
                 <input
                   type="text"
                   placeholder="Asset Title / Name"
@@ -1751,6 +1741,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             <h3 className="font-display text-lg font-bold text-white">
               SEO, Meta Titles & Social Cards
             </h3>
+
+            <ImageUploadField id="site_favicon" label="Website Icon / Favicon" value={siteSettings.faviconUrl || ''} onChange={(url) => { updateSiteSettings({ faviconUrl: url }); triggerSaveNotification('Website icon updated'); }} hint="Upload a square PNG, SVG, or ICO image. It will be saved in Supabase Storage." />
 
             <div>
               <label className="block text-xs font-semibold uppercase text-slate-300 mb-2">
