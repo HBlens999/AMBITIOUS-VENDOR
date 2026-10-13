@@ -9,12 +9,25 @@ import { ContactPage } from './pages/ContactPage';
 import { AdminDashboard } from './pages/AdminDashboard';
 
 const MainContent: React.FC = () => {
-  const { siteSettings } = useData();
+  const { siteSettings, themeSettings } = useData();
 
   // Route state
   const [currentPath, setCurrentPath] = useState<string>(() => {
     return window.location.pathname || '/';
   });
+
+  // Apply the owner-selected color scheme and site icon globally
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', themeSettings.preset || 'rose');
+    let icon = document.querySelector<HTMLLinkElement>('link[rel~="icon"]');
+    if (!icon) {
+      icon = document.createElement('link');
+      icon.rel = 'icon';
+      document.head.appendChild(icon);
+    }
+    if (siteSettings.faviconUrl) icon.href = siteSettings.faviconUrl;
+    else icon.href = '/favicon.ico';
+  }, [themeSettings.preset, siteSettings.faviconUrl]);
 
   // Keep title updated with siteSettings
   useEffect(() => {
