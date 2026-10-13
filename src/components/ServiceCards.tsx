@@ -42,9 +42,9 @@ export const ServiceCards: React.FC<ServiceCardsProps> = ({ onNavigate }) => {
                   src={service.image}
                   alt={service.title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                  className="service-card-image w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061C46] via-transparent to-transparent opacity-80" />
+                <div className="service-card-image-overlay absolute inset-0 bg-gradient-to-t from-[#061C46] via-transparent to-transparent opacity-35" />
 
                 {/* Editorial Number Index */}
                 <div className="absolute top-4 left-4">
