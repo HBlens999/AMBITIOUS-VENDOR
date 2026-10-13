@@ -1508,7 +1508,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               <h3 className="font-display text-base font-bold text-white">
                 Add Image / Media Asset
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div className="sm:col-span-2">
                   <ImageUploadField id="media_asset_url" label="Upload Media Asset" value={newMediaUrl} onChange={setNewMediaUrl} hint="Uploads are stored in the Supabase media bucket." />
                 </div>
