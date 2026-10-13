@@ -336,3 +336,235 @@ html[data-theme] .site-footer-layer [class~="text-slate-200"] {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
   }
 }
+
+
+/* ============================================================
+   AMBITIOUS VENDOR — BEAUTY EDITORIAL DESIGN SYSTEM
+   Inspired by the supplied blush, rose, ivory and berry reference.
+   Intentional: crisp surfaces, solid readable text, no blur/shadows.
+   ============================================================ */
+:root {
+  --theme-bg: #fffafa;
+  --theme-surface: #ffffff;
+  --theme-surface-2: #f7e8e8;
+  --theme-border: #ead3d5;
+  --theme-accent: #b66f7d;
+  --theme-accent-2: #71384b;
+  --theme-highlight: #dca7ae;
+  --theme-text: #24171b;
+  --theme-muted: #725b61;
+  --theme-overlay: #71384b;
+  --av-ivory: #fffafa;
+  --av-rose: #b66f7d;
+  --av-blush: #f0d9dc;
+  --av-berry: #71384b;
+  --av-ink: #24171b;
+}
+html, body, #root { min-height: 100%; }
+html[data-theme] body,
+body {
+  background: var(--av-ivory) !important;
+  color: var(--av-ink) !important;
+}
+#root, #root > div {
+  background: var(--av-ivory) !important;
+  color: var(--av-ink);
+}
+::selection { background: var(--av-rose); color: #fff; }
+::-webkit-scrollbar-track { background: #f7e8e8; }
+::-webkit-scrollbar-thumb { background: #b66f7d; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #71384b; }
+
+/* Replace the former blue tech theme throughout every page and component. */
+html[data-theme] [class~="bg-[#061C46]"],
+html[data-theme] [class~="bg-[#092A61]"],
+html[data-theme] [class*="bg-[#061C46]/"],
+html[data-theme] [class*="bg-[#092A61]/"] {
+  background-color: var(--av-ivory) !important;
+}
+html[data-theme] [class~="bg-[#1766A5]"],
+html[data-theme] [class*="bg-[#1766A5]/"],
+html[data-theme] [class~="bg-[#F5C542]"] {
+  background-color: var(--av-rose) !important;
+}
+html[data-theme] [class*="border-[#1766A5]"],
+html[data-theme] [class*="border-[#71B8E8]"],
+html[data-theme] [class*="border-[#72DFFF]"],
+html[data-theme] [class*="border-[#F5C542]"] {
+  border-color: var(--theme-border) !important;
+}
+html[data-theme] [class~="text-[#F5C542]"],
+html[data-theme] [class~="text-[#72DFFF]"],
+html[data-theme] [class~="text-[#B6A4FF]"],
+html[data-theme] [class~="text-[#398BFF]"],
+html[data-theme] [class~="text-[#1766A5]"] {
+  color: var(--av-berry) !important;
+}
+html[data-theme] [class*="from-[#061C46]"] {
+  --tw-gradient-from: #fffafa var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(255 250 250 / 0) var(--tw-gradient-to-position) !important;
+}
+html[data-theme] [class*="via-[#061C46]"],
+html[data-theme] [class*="via-[#092A61]"] {
+  --tw-gradient-via: #f7e8e8 var(--tw-gradient-via-position) !important;
+}
+html[data-theme] [class*="to-[#061C46]"] {
+  --tw-gradient-to: #fffafa var(--tw-gradient-to-position) !important;
+}
+html[data-theme] [class*="shadow-"] { --tw-shadow: 0 0 #0000 !important; box-shadow: none !important; }
+html[data-theme] [class*="backdrop-blur"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+html[data-theme] [class*="blur-"] { filter: none !important; }
+html[data-theme] input, html[data-theme] textarea, html[data-theme] select {
+  background: #fff !important;
+  color: #24171b !important;
+  border-color: #ead3d5 !important;
+}
+html[data-theme] input::placeholder,
+html[data-theme] textarea::placeholder { color: #8d747b !important; }
+html[data-theme] button,
+html[data-theme] a[class*="bg-[#1766A5]"],
+html[data-theme] a[class*="bg-[#F5C542]"] {
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+html[data-theme] .animate-marquee-rtl { color: var(--av-berry); }
+
+/* Navigation: crisp ivory bar, berry accents, no gradient veil. */
+.site-header-layer {
+  background: #fffafa !important;
+  color: #24171b !important;
+  border-bottom: 1px solid #ead3d5;
+  box-shadow: none !important;
+}
+.site-header-layer::before { display: none !important; }
+.site-header-layer,
+.site-header-layer * { text-shadow: none !important; }
+.site-header-layer a:hover,
+.site-header-layer button:hover { color: #b66f7d !important; }
+
+/* Footer: solid deep berry, matching the reference's rich rose footer. */
+.site-footer-layer {
+  background: #71384b !important;
+  color: #fffafa !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+.site-footer-layer::before { display: none !important; }
+.site-footer-layer,
+.site-footer-layer p,
+.site-footer-layer a,
+.site-footer-layer h1,
+.site-footer-layer h2,
+.site-footer-layer h3,
+.site-footer-layer span,
+.site-footer-layer li { color: #fffafa !important; text-shadow: none !important; }
+.site-footer-layer a:hover { color: #f0d9dc !important; }
+.site-footer-layer input {
+  background: #fffafa !important;
+  color: #24171b !important;
+  border: 1px solid #ead3d5 !important;
+}
+
+/* The hero is an editorial blush/ivory canvas rather than a dark blue tech panel. */
+.hero-section {
+  background: #f0d9dc !important;
+  isolation: isolate;
+  color: #24171b;
+}
+.hero-section > div.absolute.inset-0:first-child {
+  opacity: .3;
+}
+.hero-section > div.absolute.inset-0:first-child img {
+  filter: saturate(.5) sepia(.08) !important;
+}
+.hero-section > div.absolute.inset-0:first-child > div {
+  background: linear-gradient(180deg, rgba(255,250,250,.22), rgba(113,56,75,.28)) !important;
+  mix-blend-mode: normal !important;
+}
+.hero-section > div.absolute.inset-0:first-child > div + div {
+  background: linear-gradient(180deg, rgba(255,250,250,.12), rgba(240,217,220,.35)) !important;
+}
+.hero-section .hero-kicker {
+  display: inline-block;
+  padding: .55rem .9rem;
+  border-radius: 2px !important;
+  background: #fffafa !important;
+  border: 1px solid #ead3d5 !important;
+  color: #71384b !important;
+  text-shadow: none !important;
+}
+.hero-section .hero-kicker + span { color: #71384b !important; }
+.hero-section .hero-title {
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.055em;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-stroke: 0 !important;
+  background-size: 240% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  animation: av-elemental-text 13s steps(1, end) infinite !important;
+}
+/* Four distinct, sharp animated treatments: ember, electric ice, lightning and rose-gold.
+   No text-shadow, glow, blur filter or hazy overlay is used. */
+@keyframes av-elemental-text {
+  0%, 24% {
+    background-image: linear-gradient(180deg, #fff0b8 0%, #ffb13b 20%, #f04428 47%, #8f172b 72%, #30121f 100%);
+    background-position: 0% 50%;
+    -webkit-text-stroke: .6px #9b2d30;
+  }
+  25%, 49% {
+    background-image: repeating-linear-gradient(115deg, #eaffff 0%, #a8f1ff 13%, #3dbbe8 25%, #f7ffff 31%, #2e8bc8 42%, #eaffff 52%);
+    background-position: 100% 50%;
+    -webkit-text-stroke: .6px #287aa2;
+  }
+  50%, 74% {
+    background-image: repeating-linear-gradient(105deg, #201b36 0%, #201b36 38%, #dffaff 39%, #ffffff 41%, #64dfff 43%, #201b36 46%, #201b36 100%);
+    background-position: 0% 50%;
+    -webkit-text-stroke: .6px #5bc7ed;
+  }
+  75%, 100% {
+    background-image: linear-gradient(100deg, #71384b 0%, #b66f7d 22%, #f5d9d7 38%, #fffafa 50%, #dca7ae 63%, #71384b 82%, #b66f7d 100%);
+    background-position: 100% 50%;
+    -webkit-text-stroke: .6px #71384b;
+  }
+}
+.hero-description {
+  color: #24171b !important;
+  background: rgba(255,250,250,.94);
+  border-left: 4px solid #b66f7d;
+  padding: 1rem 1.15rem;
+  line-height: 1.65 !important;
+  max-width: 44rem;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+.hero-section .hero-title + p { color: #24171b !important; }
+.hero-section .bg-[#061C46] { background-color: #fffafa !important; }
+.hero-section .border-[#71B8E8\/30] { border-color: #ead3d5 !important; }
+.hero-section svg { filter: none !important; }
+
+/* Restore legible surfaces, headings, cards, and content across every route. */
+html[data-theme] main { color: #24171b; }
+html[data-theme] main section,
+html[data-theme] main article { --tw-shadow: 0 0 #0000; box-shadow: none; }
+html[data-theme] main [class*="rounded-"] { border-color: #ead3d5; }
+html[data-theme] main [class*="text-slate-100"],
+html[data-theme] main [class*="text-slate-200"],
+html[data-theme] main [class*="text-slate-300"],
+html[data-theme] main [class*="text-white"] { color: #24171b; }
+html[data-theme] main [class*="text-[#F5C542]"],
+html[data-theme] main [class*="text-[#72DFFF]"],
+html[data-theme] main [class*="text-[#398BFF]"] { color: #71384b !important; }
+html[data-theme] main [class*="bg-[#092A61]"],
+html[data-theme] main [class*="bg-[#061C46]"] { background-color: #fffafa !important; }
+html[data-theme] main [class*="bg-[#1766A5]"],
+html[data-theme] main [class*="bg-[#F5C542]"] { background-color: #b66f7d !important; }
+html[data-theme] main [class*="border-[#1766A5]"] { border-color: #ead3d5 !important; }
+
+/* The SVG mountain silhouette should not paint a blue slab over the blush design. */
+.hero-section svg linearGradient stop { stop-color: #f0d9dc !important; stop-opacity: .95 !important; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .hero-title { animation-duration: 52s !important; }
+}
