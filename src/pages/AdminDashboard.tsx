@@ -446,7 +446,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                   Connected to Supabase Project: {connectionStatus.projectId}
                 </p>
                 <p className="text-xs text-slate-300 mt-1">
-                  PostgreSQL schema: <code className="text-[#F5C542]">{connectionStatus.firestoreDatabaseId}</code>. Services, portfolio, perfumes, settings, and inquiries are stored in Supabase.
+                  Database: <code className="text-[#F5C542]">{connectionStatus.databaseLabel}</code>. Services, portfolio, perfumes, settings, and inquiries are stored in Supabase.
                 </p>
               </div>
               <button
@@ -1838,7 +1838,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                   Database
                 </span>
                 <span className="text-xs font-mono font-bold text-[#72DFFF] break-all">
-                  {connectionStatus.firestoreDatabaseId}
+                  {connectionStatus.databaseLabel}
                 </span>
               </div>
 
