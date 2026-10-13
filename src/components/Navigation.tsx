@@ -35,13 +35,13 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`site-header-layer fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-[#061C46]/90 backdrop-blur-md border-b border-[#1766A5]/30 py-3.5 shadow-lg shadow-[#061C46]/50'
           : 'bg-gradient-to-b from-[#061C46]/80 via-[#061C46]/40 to-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-[1] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-8">
           {/* Zone 1: Single text element Brand Wordmark */}
           <button
@@ -121,7 +121,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPath, onNavigate 
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#061C46]/98 border-b border-[#1766A5]/40 px-6 py-6 backdrop-blur-xl animate-in slide-in-from-top-4 duration-200">
+        <div className="relative z-[1] md:hidden bg-[#061C46]/98 border-b border-[#1766A5]/40 px-6 py-6 backdrop-blur-xl animate-in slide-in-from-top-4 duration-200">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => {
               const isActive = currentPath === link.path;
