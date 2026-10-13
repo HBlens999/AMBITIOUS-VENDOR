@@ -944,3 +944,157 @@ html[data-theme] main [class*="text-[#398BFF]"] { color: #71384b !important; }
 .hero-section img { filter: none; }
 .hero-section .hero-background-image { filter: saturate(.72) brightness(.48) !important; }
 html[data-theme] [class*="backdrop-blur"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+
+
+/* Readable section introductions across the whole site */
+html[data-theme] main section h1,
+html[data-theme] main section h2,
+html[data-theme] main section h3 {
+  color: #71384b !important;
+  text-shadow: none !important;
+}
+html[data-theme] main section h2 {
+  display: table;
+  max-width: 100%;
+  padding: .2em .45em .28em;
+  margin-inline: 0;
+  border-radius: 4px;
+  background: #f7e8e8 !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+html[data-theme] main section h1 {
+  max-width: 100%;
+  padding: .18em .3em .22em;
+  border-radius: 4px;
+  background: #fff0f2 !important;
+}
+html[data-theme] main section h1 + p,
+html[data-theme] main section h2 + p,
+html[data-theme] main section h1 + div > p,
+html[data-theme] main section h2 + div > p {
+  color: #725b61 !important;
+  background: #fffafa !important;
+  padding: .55rem .8rem;
+  border-left: 3px solid #b66f7d;
+  border-radius: 0 4px 4px 0;
+  max-width: 58rem;
+}
+html[data-theme] main section [class*="text-slate-400"],
+html[data-theme] main section [class*="text-slate-500"],
+html[data-theme] main section [class*="text-slate-300"] {
+  color: #725b61 !important;
+}
+html[data-theme] main section [class*="bg-[#061C46]"],
+html[data-theme] main section [class*="bg-[#092A61]"],
+html[data-theme] main section [class*="bg-[#1766A5]"] {
+  background-color: #f7e8e8 !important;
+}
+html[data-theme] main section [class*="text-white"] { color: #24171b !important; }
+
+/* Five visibly different glow colors. The hero background stays fixed. */
+.hero-section .hero-title {
+  animation: av-five-color-glow 10s linear infinite !important;
+  will-change: text-shadow, color;
+}
+@keyframes av-five-color-glow {
+  0%, 19.99% {
+    color: #fff4e6 !important; -webkit-text-fill-color: #fff4e6 !important;
+    text-shadow: 0 0 2px #fff4e6, 0 0 8px #ff9a3d, 0 0 18px #ff4b21, 0 0 34px #f12711, 0 0 54px #a91413 !important;
+  }
+  20%, 39.99% {
+    color: #f1ffff !important; -webkit-text-fill-color: #f1ffff !important;
+    text-shadow: 0 0 2px #fff, 0 0 9px #b7f7ff, 0 0 20px #39dfff, 0 0 38px #149ce8, 0 0 58px #0956a8 !important;
+  }
+  40%, 59.99% {
+    color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #67e9ff, 0 0 36px #2e9dff, 0 0 60px #3655ff !important;
+  }
+  60%, 79.99% {
+    color: #fff0fb !important; -webkit-text-fill-color: #fff0fb !important;
+    text-shadow: 0 0 2px #fff0fb, 0 0 10px #f8a6ff, 0 0 22px #d45bff, 0 0 40px #8d39d9, 0 0 60px #5723a6 !important;
+  }
+  80%, 100% {
+    color: #fff4f6 !important; -webkit-text-fill-color: #fff4f6 !important;
+    text-shadow: 0 0 2px #fff4f6, 0 0 10px #ffc0d0, 0 0 22px #e58ba6, 0 0 40px #b64e72, 0 0 60px #71384b !important;
+  }
+}
+
+/* Mobile-first layout corrections for hero, cards, headings, buttons and navigation. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+img, video, canvas, svg { max-width: 100%; }
+.hero-section {
+  min-height: 100svh !important;
+  min-height: 100vh !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.hero-section .hero-title {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  font-size: clamp(2.15rem, 9.5vw, 10.5rem) !important;
+  line-height: .98 !important;
+  letter-spacing: -.045em !important;
+}
+.hero-section > div.relative.z-10 {
+  width: 100%;
+  padding-inline: clamp(.65rem, 3vw, 1.5rem);
+  padding-top: clamp(1rem, 4vh, 2.5rem);
+  padding-bottom: clamp(5.5rem, 13vh, 8rem);
+}
+.hero-section .hero-description {
+  width: 100%;
+  font-size: clamp(.9rem, 3.5vw, 1.125rem) !important;
+  padding: .8rem .9rem !important;
+  overflow-wrap: anywhere;
+}
+.hero-section > div.relative.z-30 {
+  width: 100%;
+  padding-inline: clamp(.85rem, 4vw, 2rem);
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+}
+.hero-section > div.relative.z-30 > div { gap: 1rem; }
+.hero-section > div.relative.z-30 button {
+  white-space: normal !important;
+  max-width: 100%;
+  justify-content: center;
+  min-height: 44px;
+  padding: .75rem 1rem !important;
+}
+.hero-section > div.absolute.bottom-0 > svg {
+  min-height: 100px !important;
+  max-height: 32vh;
+}
+.site-header-layer { max-width: 100vw; }
+.site-header-layer nav { min-width: 0; }
+.site-header-layer .site-wordmark { font-size: clamp(.85rem, 3.4vw, 1.25rem) !important; letter-spacing: .03em !important; }
+html[data-theme] main section { min-width: 0; max-width: 100%; }
+html[data-theme] main section h1,
+html[data-theme] main section h2 {
+  overflow-wrap: anywhere;
+  font-size: clamp(1.6rem, 7vw, 3.25rem);
+}
+html[data-theme] main section h2 { padding: .28em .38em !important; }
+html[data-theme] main section p { overflow-wrap: anywhere; }
+html[data-theme] main [class*="grid"] { min-width: 0; }
+.service-card { min-width: 0; }
+.service-card-content { padding: clamp(.9rem, 3vw, 1.5rem) !important; }
+@media (max-width: 640px) {
+  .hero-section { min-height: auto !important; }
+  .hero-section > div.h-20,
+  .hero-section > div.lg\:h-24 { height: 5rem; }
+  .hero-section > div.relative.z-10 { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .hero-section .hero-title { font-size: clamp(2rem, 10vw, 3.8rem) !important; line-height: 1.02 !important; }
+  .hero-section .hero-kicker { font-size: .62rem !important; letter-spacing: .08em !important; text-align: center; }
+  .hero-section > div.relative.z-30 > div { display: flex; flex-direction: column; align-items: stretch; }
+  .hero-section > div.relative.z-30 button { width: 100%; }
+  .hero-section > div.absolute.bottom-0 > svg { min-height: 82px !important; max-height: 19vh; }
+  html[data-theme] main section h2 { display: inline-block; max-width: 100%; }
+  html[data-theme] main section h1 + p,
+  html[data-theme] main section h2 + p,
+  html[data-theme] main section h1 + div > p,
+  html[data-theme] main section h2 + div > p { padding: .65rem .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .hero-title { animation: none !important; text-shadow: 0 0 10px #e58ba6, 0 0 24px #b64e72 !important; }
+}
