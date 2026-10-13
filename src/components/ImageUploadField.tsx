@@ -34,25 +34,26 @@ export const ImageUploadField: React.FC<ImageUploadFieldProps> = ({ id, label, v
       setError('Images must be 10 MB or smaller.');
       return;
     }
-    if (!supabase) {
+    const client = supabase;
+    if (!client) {
       setError('Supabase is not configured. Please check the website configuration.');
       return;
     }
     setUploading(true);
     try {
-      const { data: sessionData } = await supabase.auth.getSession();
+      const { data: sessionData } = await client.auth.getSession();
       if (!sessionData.session) {
         throw new Error('Please sign in as an administrator before uploading images.');
       }
       const safeName = file.name.toLowerCase().replace(/[^a-z0-9._-]+/g, '-');
       const path = `${sessionData.session.user.id}/${Date.now()}-${safeName}`;
-      const { error: uploadError } = await supabase.storage.from('ambitious-vendor-media').upload(path, file, {
+      const { error: uploadError } = await client.storage.from('ambitious-vendor-media').upload(path, file, {
         cacheControl: '31536000',
         upsert: false,
         contentType: file.type,
       });
       if (uploadError) throw uploadError;
-      const { data } = supabase.storage.from('ambitious-vendor-media').getPublicUrl(path);
+      const { data } = client.storage.from('ambitious-vendor-media').getPublicUrl(path);
       changeUrl(data.publicUrl);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Image upload failed. Please try again.');
