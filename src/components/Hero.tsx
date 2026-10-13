@@ -27,12 +27,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       {/* =========================================================================
           LAYER 1: Deep-Blue Atmospheric Sky & Mountain Background
           ========================================================================= */}
-      <div className="absolute inset-0 z-0">
+      <div className="hero-background absolute inset-0 z-0">
         <img
           src={heroSettings.bgImage}
           alt="Atmospheric Blue Mountain Peak Landscape"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
+          className="hero-background-image w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
         />
         {/* Deep navy color grade overlays to replicate the Triplio atmosphere */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#061C46] via-[#061C46]/45 to-[#061C46]/60 mix-blend-multiply" />
