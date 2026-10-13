@@ -197,6 +197,25 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+      {/* CEO / Founder Showcase - portrait is managed in the admin About tab */}
+      {aboutContent.ceoImage && (
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#1766A5]/20">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center rounded-[2rem] overflow-hidden bg-[#092A61]/50 border border-[#1766A5]/30 p-5 sm:p-8">
+            <div className="relative max-w-md mx-auto w-full">
+              <img src={aboutContent.ceoImage} alt={aboutContent.ceoName || 'AMBITIOUS VENDOR CEO and founder'} loading="lazy" className="w-full aspect-[4/5] object-cover rounded-2xl shadow-xl" />
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none" />
+            </div>
+            <div className="py-4">
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#F5C542] block mb-3">Leadership & Vision</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-4">Meet the Vision Behind the Brand</h2>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">A founder-led creative studio bringing strategy, design, digital experiences, and fragrance together under one distinctive brand.</p>
+              <p className="font-display text-xl font-bold text-white">{aboutContent.ceoName || 'Founder & CEO'}</p>
+              <p className="text-sm font-semibold text-[#72DFFF] mt-1">{aboutContent.ceoTitle || 'Founder, AMBITIOUS VENDOR'}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Contact CTA */}
       <ContactCta onNavigate={onNavigate} />
     </div>
