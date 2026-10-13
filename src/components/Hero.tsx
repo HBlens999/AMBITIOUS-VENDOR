@@ -61,6 +61,14 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         </div>
       )}
 
+      {/* Full-hero elemental atmosphere: sharp flame tongues / lightning bolts, switched with the headline state. */}
+      <div className="elemental-atmosphere" aria-hidden="true">
+        <div className="elemental-flames" />
+        <div className="elemental-lightning elemental-lightning-one" />
+        <div className="elemental-lightning elemental-lightning-two" />
+        <div className="elemental-ice-shards" />
+      </div>
+
       {/* Spacer for fixed top navigation */}
       <div className="h-20 lg:h-24" />
 
@@ -80,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         {/* The Signature Enormous Animated Typography */}
         <div className="w-full text-center max-w-[100vw] overflow-hidden px-2">
           <h1
-            className="hero-title font-display font-black tracking-tighter uppercase select-none animate-hero-typography leading-[0.88]"
+            className="hero-title font-display font-black tracking-tighter uppercase select-none animate-hero-typography leading-[0.88]" data-elemental-title
             style={{
               fontSize: 'clamp(2.75rem, 10.5vw, 10.5rem)',
               letterSpacing: heroSettings.letterSpacing,
