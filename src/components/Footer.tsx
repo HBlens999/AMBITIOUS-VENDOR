@@ -10,8 +10,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const { siteSettings } = useData();
 
   return (
-    <footer className="border-t border-[#1766A5]/30 bg-[#041331] text-slate-300 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <footer className="site-footer-layer isolate relative border-t border-[#1766A5]/30 bg-[#041331] text-slate-300 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-[1] max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-[#1766A5]/20">
           {/* Brand Info */}
           <div className="lg:col-span-5">
