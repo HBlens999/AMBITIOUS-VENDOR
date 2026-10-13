@@ -31,7 +31,7 @@ export const initialHeroSettings: HeroSettings = {
   color2: '#FFFFFF', // Pure white
   color3: '#F48FB1', // Soft rose
   color4: '#AD1457', // Deep berry
-  color5: '#FFD6E7' // Blush pink
+  color5: '#FFD6E7', // Blush pink
   duration: 12, // 12 seconds per full color loop
   glowIntensity: 0.65,
   fontSizeRem: 8.5,
