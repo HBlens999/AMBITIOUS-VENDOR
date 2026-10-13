@@ -37,9 +37,9 @@ export const initialHeroSettings: HeroSettings = {
   fontSizeRem: 8.5,
   letterSpacing: '-0.04em',
   bgImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=90',
-  subheading: 'Strategy · Design · Motion · Fragrance',
+  subheading: 'Strategy · Graphic Design · Web · Video · Fragrance',
   description:
-    'A passionate graphic designer and skilled video editor, I bridge the gap between strategy and creativity. I craft cohesive brand identities and produce high-retention video content tailored for modern digital platforms, ensuring every project is visually stunning, purposeful, and results-driven.',
+    'AMBITIOUS VENDOR brings strategy and creativity together through distinctive graphic design, responsive website development, high-retention video editing, and carefully curated fragrances. We help people and businesses build a clear visual identity, strengthen their digital presence, and make a memorable impression.',
   primaryCtaText: 'Explore Our Services',
   primaryCtaLink: '/services',
   secondaryCtaText: 'Contact Us',
