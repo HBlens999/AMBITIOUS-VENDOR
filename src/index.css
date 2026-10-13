@@ -568,3 +568,228 @@ html[data-theme] main [class*="border-[#1766A5]"] { border-color: #ead3d5 !impor
 @media (prefers-reduced-motion: reduce) {
   .hero-section .hero-title { animation-duration: 52s !important; }
 }
+
+
+/* ============================================================
+   CLEAN IMAGE TREATMENT + LIVE ELEMENTAL HERO V2
+   Explicitly undo the pale wash on content imagery. The hero uses
+   a crisp, animated scene rather than a simple color interpolation.
+   ============================================================ */
+.service-card-image {
+  display: block;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: scale(1);
+}
+.service-card-image-overlay {
+  opacity: .28 !important;
+  background: linear-gradient(0deg, rgba(36,23,27,.58), transparent 58%) !important;
+}
+.group:hover .service-card-image { transform: scale(1.045); }
+html[data-theme="rose"] main img,
+html[data-theme="rose"] .service-card-image,
+html[data-theme="rose"] .hero-section img {
+  filter: none !important;
+  opacity: 1;
+}
+html[data-theme] main section[class*="min-h-[92vh]"] img { filter: none !important; }
+html[data-theme] main [class*="bg-gradient-to-"] { background-color: transparent; }
+html[data-theme] main .service-card-image-overlay { opacity: .28 !important; }
+html[data-theme] main .service-card-image-overlay {
+  background: linear-gradient(0deg, rgba(36,23,27,.58), transparent 58%) !important;
+}
+html[data-theme] main [class*="backdrop-blur"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-theme] main [class*="shadow-"] {
+  box-shadow: none !important;
+  --tw-shadow: 0 0 #0000 !important;
+}
+
+/* Hero base is an actual scene. Only the scene background changes with each
+   elemental phase; text and UI remain crisp above it. */
+.hero-section {
+  background: #fffafa !important;
+  isolation: isolate;
+  --elemental-scene: #fffafa;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--elemental-scene);
+  opacity: .12;
+  animation: av-scene-cycle 16s steps(1,end) infinite;
+}
+.elemental-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  animation: av-atmosphere-cycle 16s steps(1,end) infinite;
+}
+.elemental-flames {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -4%;
+  height: 72%;
+  opacity: 0;
+  transform-origin: bottom center;
+  background:
+    radial-gradient(ellipse at 10% 100%, rgba(255,30,0,.96) 0 7%, transparent 32%),
+    radial-gradient(ellipse at 26% 100%, rgba(255,105,0,.95) 0 9%, transparent 31%),
+    radial-gradient(ellipse at 45% 100%, rgba(255,210,35,.96) 0 8%, transparent 29%),
+    radial-gradient(ellipse at 65% 100%, rgba(255,62,0,.94) 0 10%, transparent 34%),
+    radial-gradient(ellipse at 88% 100%, rgba(255,125,0,.96) 0 11%, transparent 32%),
+    repeating-linear-gradient(102deg, transparent 0 4%, rgba(255,55,0,.8) 4.5% 6%, transparent 7% 11%);
+  -webkit-mask-image: repeating-linear-gradient(0deg, #000 0 28%, transparent 60% 72%, #000 82% 100%);
+  mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.92) 30%, transparent 96%);
+  animation: av-flame-rise 1.1s ease-in-out infinite alternate;
+}
+.elemental-flames::before,
+.elemental-flames::after {
+  content: "";
+  position: absolute;
+  inset: 5% 0 0;
+  background:
+    repeating-linear-gradient(78deg, transparent 0 3%, #ffbd37 3.5% 4.5%, #f74716 5% 6%, transparent 7% 11%),
+    repeating-linear-gradient(103deg, transparent 0 6%, rgba(255,238,125,.95) 6.5% 7.5%, transparent 8% 14%);
+  -webkit-mask-image: repeating-linear-gradient(0deg, #000 0 13%, transparent 21% 27%, #000 36% 49%, transparent 60% 66%, #000 75% 100%);
+  mask-image: repeating-linear-gradient(0deg, #000 0 13%, transparent 21% 27%, #000 36% 49%, transparent 60% 66%, #000 75% 100%);
+  animation: av-flame-flicker .75s steps(3,end) infinite alternate;
+}
+.elemental-flames::after {
+  inset: 20% 0 0;
+  opacity: .8;
+  transform: scaleX(-1);
+  animation-duration: .55s;
+}
+.elemental-lightning {
+  position: absolute;
+  top: -3%;
+  width: 48%;
+  height: 110%;
+  opacity: 0;
+  background: #e9ffff;
+  clip-path: polygon(48% 0, 56% 0, 44% 27%, 57% 27%, 28% 61%, 39% 42%, 25% 42%);
+  filter: none !important;
+  animation: av-lightning-flash 16s steps(1,end) infinite;
+}
+.elemental-lightning-one { left: 7%; }
+.elemental-lightning-two {
+  right: 4%;
+  transform: scaleX(-1) scaleY(.84);
+  animation-delay: .2s;
+}
+.elemental-ice-shards {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background:
+    linear-gradient(118deg, transparent 0 24%, rgba(229,253,255,.95) 24.1% 24.25%, transparent 24.4% 100%),
+    linear-gradient(72deg, transparent 0 62%, rgba(91,225,255,.95) 62.1% 62.3%, transparent 62.5% 100%),
+    linear-gradient(165deg, transparent 0 42%, rgba(255,255,255,.9) 42.1% 42.22%, transparent 42.4% 100%),
+    radial-gradient(ellipse at 50% 0%, rgba(73,206,255,.6), transparent 60%);
+  animation: av-ice-surge 16s steps(1,end) infinite;
+}
+.hero-section .hero-title {
+  position: relative;
+  z-index: 4;
+  background-size: 100% 240%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-stroke: .8px rgba(113,56,75,.55);
+  animation: av-elemental-lettering 16s steps(1,end) infinite !important;
+}
+.hero-section .hero-description,
+.hero-section .hero-kicker,
+.hero-section button {
+  position: relative;
+  z-index: 5;
+}
+@keyframes av-elemental-lettering {
+  0%, 24% {
+    background-image: linear-gradient(0deg, #37111b 0%, #8e1c16 17%, #ff3b0b 38%, #ff9a1f 60%, #fff0a8 76%, #ff5a13 88%, #8e1c16 100%);
+    background-size: 100% 220%;
+    background-position: 50% 100%;
+    -webkit-text-stroke-color: #ff7a1a;
+  }
+  25%, 49% {
+    background-image: repeating-linear-gradient(0deg, #f8ffff 0%, #9cf2ff 10%, #168fc9 19%, #f5ffff 28%, #52d8ff 39%, #1a5fa2 48%, #f8ffff 58%);
+    background-size: 100% 250%;
+    background-position: 50% 80%;
+    -webkit-text-stroke-color: #1677a7;
+  }
+  50%, 74% {
+    background-image: repeating-linear-gradient(180deg, #16142b 0%, #16142b 38%, #e7ffff 39%, #ffffff 41%, #63e5ff 43%, #16142b 46%, #16142b 100%);
+    background-size: 100% 230%;
+    background-position: 50% 40%;
+    -webkit-text-stroke-color: #a6f5ff;
+  }
+  75%, 100% {
+    background-image: linear-gradient(0deg, #71384b 0%, #b66f7d 22%, #f5d9d7 38%, #fffafa 50%, #dca7ae 63%, #71384b 82%, #b66f7d 100%);
+    background-size: 100% 200%;
+    background-position: 50% 50%;
+    -webkit-text-stroke-color: #71384b;
+  }
+}
+@keyframes av-scene-cycle {
+  0%, 24% { background: linear-gradient(0deg, rgba(255,51,0,.74), rgba(117,12,11,.3) 55%, rgba(255,129,0,.18)); opacity: .78; }
+  25%, 49% { background: linear-gradient(140deg, rgba(10,124,184,.78), rgba(223,251,255,.38), rgba(18,60,119,.48)); opacity: .78; }
+  50%, 74% { background: linear-gradient(0deg, rgba(17,21,48,.65), rgba(20,90,155,.28)); opacity: .76; }
+  75%, 100% { background: linear-gradient(0deg, rgba(113,56,75,.2), rgba(255,250,250,.04)); opacity: .12; }
+}
+@keyframes av-atmosphere-cycle {
+  0%, 24% { background: radial-gradient(ellipse at 50% 100%, rgba(255,66,0,.25), transparent 68%); }
+  25%, 49% { background: radial-gradient(ellipse at 50% 0%, rgba(82,221,255,.22), transparent 70%); }
+  50%, 74% { background: radial-gradient(ellipse at 50% 35%, rgba(48,172,255,.13), transparent 68%); }
+  75%, 100% { background: transparent; }
+}
+@keyframes av-flame-rise {
+  0% { transform: translateY(5%) scaleX(1); background-position: 0 0, 20% 0, 50% 0, 70% 0, 100% 0, 0 0; }
+  100% { transform: translateY(-4%) scaleX(1.025); background-position: 0 -90px, 20% -130px, 50% -75px, 70% -120px, 100% -95px, 20px -160px; }
+}
+@keyframes av-flame-flicker {
+  0% { transform: translateY(4%) skewX(-2deg); }
+  33% { transform: translateY(-4%) skewX(2deg) scaleX(1.02); }
+  66% { transform: translateY(2%) skewX(-1deg) scaleX(.99); }
+  100% { transform: translateY(-6%) skewX(3deg) scaleX(1.04); }
+}
+@keyframes av-lightning-flash {
+  0%, 24%, 26%, 49%, 51%, 74%, 76%, 100% { opacity: 0; }
+  25% { opacity: .95; }
+  25.3% { opacity: .08; }
+  25.6% { opacity: .9; }
+  25.9% { opacity: .15; }
+  50% { opacity: .95; }
+  50.2% { opacity: .1; }
+  50.5% { opacity: 1; }
+  50.8% { opacity: .05; }
+  75% { opacity: .08; }
+}
+@keyframes av-ice-surge {
+  0%, 24%, 50%, 74%, 75%, 100% { opacity: 0; }
+  25%, 27% { opacity: .9; }
+  28% { opacity: .28; }
+  32%, 49% { opacity: .52; }
+  51%, 54% { opacity: .85; }
+  55%, 74% { opacity: .24; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .elemental-atmosphere,
+  .elemental-flames,
+  .elemental-lightning,
+  .elemental-ice-shards,
+  .hero-section .hero-title { animation-duration: 64s !important; }
+}
