@@ -88,6 +88,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
 
   // Auth passcode input state
   const [passcode, setPasscode] = useState('');
+  const [adminEmail, setAdminEmail] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
   const [testingConnection, setTestingConnection] = useState(false);
@@ -123,7 +124,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError(null);
-    const res = await loginAdmin(passcode);
+    const res = await loginAdmin(passcode, adminEmail);
     if (!res.success) {
       setAuthError(res.message);
     } else {
@@ -144,7 +145,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             Administrator Gateway
           </h2>
           <p className="text-xs text-slate-300 text-center mb-6">
-            Secure admin authentication connected to Firebase Project <strong>ambitious-vendor</strong>.
+            Secure administrator authentication powered by Supabase Auth.
           </p>
 
           {authError && (
@@ -171,25 +172,38 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
 
             <div className="relative flex py-2 items-center">
               <div className="flex-grow border-t border-[#1766A5]/40"></div>
-              <span className="flex-shrink mx-4 text-[10px] uppercase font-mono text-slate-400">or use passcode</span>
+              <span className="flex-shrink mx-4 text-[10px] uppercase font-mono text-slate-400">or use email and password</span>
               <div className="flex-grow border-t border-[#1766A5]/40"></div>
             </div>
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold uppercase text-slate-300 mb-1.5">
-                  Admin Passcode
+                  Administrator Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  autoComplete="username"
+                  value={adminEmail}
+                  onChange={(e) => setAdminEmail(e.target.value)}
+                  placeholder="Enter your authorized admin email"
+                  className="w-full px-4 py-3 mb-3 rounded-xl bg-[#061C46] border border-[#1766A5]/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#F5C542]"
+                />
+                <label className="block text-xs font-semibold uppercase text-slate-300 mb-1.5">
+                  Administrator Password
                 </label>
                 <input
                   type="password"
+                  autoComplete="current-password"
                   required
                   value={passcode}
                   onChange={(e) => setPasscode(e.target.value)}
-                  placeholder="Enter admin passcode (e.g. ambitious2026)"
+                  placeholder="Enter your Supabase Auth password"
                   className="w-full px-4 py-3 rounded-xl bg-[#061C46] border border-[#1766A5]/60 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#F5C542]"
                 />
                 <p className="text-[11px] text-slate-400 mt-1.5">
-                  Default demo passcode: <span className="text-[#F5C542] font-mono">ambitious2026</span>
+                  Use an administrator account created in Supabase Authentication.
                 </p>
               </div>
 
@@ -233,7 +247,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             <div className="mt-2 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[11px] text-slate-300">
-                Firebase Connected
+                Supabase Connected
               </span>
             </div>
           </div>
@@ -252,7 +266,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
               { id: 'submissions', label: `Inquiries (${submissions.length})`, icon: Mail },
               { id: 'theme', label: 'Design & Colors', icon: Palette },
               { id: 'seo', label: 'SEO & Metadata', icon: Globe },
-              { id: 'firebase', label: 'Firebase & Firestore', icon: Database },
+              { id: 'firebase', label: 'Supabase Database', icon: Database },
             ].map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -429,17 +443,17 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                   Database & Cloud Architecture
                 </span>
                 <p className="text-sm text-white font-semibold">
-                  Connected to Firebase Project: {connectionStatus.projectId}
+                  Connected to Supabase Project: {connectionStatus.projectId}
                 </p>
                 <p className="text-xs text-slate-300 mt-1">
-                  Firestore Database: <code className="text-[#F5C542]">{connectionStatus.firestoreDatabaseId}</code>. All services, portfolio, perfumes, and inquiries sync in real time.
+                  PostgreSQL schema: <code className="text-[#F5C542]">{connectionStatus.firestoreDatabaseId}</code>. Services, portfolio, perfumes, settings, and inquiries are stored in Supabase.
                 </p>
               </div>
               <button
                 onClick={() => setActiveTab('firebase')}
                 className="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#1766A5] hover:bg-[#1a77c2] text-white whitespace-nowrap"
               >
-                Inspect Firebase Integration
+                Inspect Supabase Integration
               </button>
             </div>
           </div>
@@ -1786,24 +1800,24 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
         )}
 
         {/* =========================================================================
-            TAB 12: FIREBASE & FIRESTORE INTEGRATION
+            TAB 12: SUPABASE INTEGRATION
             ========================================================================= */}
         {activeTab === 'firebase' && (
           <div className="p-8 rounded-3xl bg-[#061C46] border border-[#1766A5]/40 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h3 className="font-display text-lg font-bold text-white">
-                  Firebase Firestore Database & Authentication
+                  Supabase PostgreSQL Database & Authentication
                 </h3>
                 <p className="text-xs text-slate-300 mt-1">
-                  Connected to Firebase Project <strong>{connectionStatus.projectId}</strong>
+                  Connected to Supabase Project <strong>{connectionStatus.projectId}</strong>
                 </p>
               </div>
 
               <div className="px-4 py-2 rounded-xl bg-[#092A61] border border-[#1766A5]/50 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-bold text-white uppercase tracking-wider">
-                  Firebase Connected
+                  Supabase Connected
                 </span>
               </div>
             </div>
@@ -1812,7 +1826,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-4 rounded-2xl bg-[#092A61]/60 border border-[#1766A5]/30">
                 <span className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
-                  Firebase Project ID
+                  Supabase Project Reference
                 </span>
                 <span className="text-sm font-mono font-bold text-[#F5C542]">
                   {connectionStatus.projectId}
@@ -1821,7 +1835,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
 
               <div className="p-4 rounded-2xl bg-[#092A61]/60 border border-[#1766A5]/30">
                 <span className="text-[10px] font-mono uppercase text-slate-400 block mb-1">
-                  Firestore Database ID
+                  Database
                 </span>
                 <span className="text-xs font-mono font-bold text-[#72DFFF] break-all">
                   {connectionStatus.firestoreDatabaseId}
@@ -1851,10 +1865,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             <div className="p-5 rounded-2xl bg-[#092A61]/50 border border-[#1766A5]/30 flex items-center justify-between">
               <div>
                 <h4 className="font-display text-sm font-bold text-white">
-                  Test Firestore Database Connection
+                  Test Supabase Database Connection
                 </h4>
                 <p className="text-xs text-slate-300 mt-0.5">
-                  Verifies real-time communication between your app and Firestore.
+                  Checks that the website can read Supabase using its public client key.
                 </p>
               </div>
               <button
@@ -1863,10 +1877,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
                 onClick={async () => {
                   setTestingConnection(true);
                   try {
-                    const { testConnection } = await import('../lib/firebase');
-                    const ok = await testConnection();
+                    const { supabase } = await import('../lib/supabase');
+                    const { error } = await supabase!.from('site_settings').select('key').limit(1);
+                    const ok = !error;
                     if (ok) {
-                      triggerSaveNotification('Firestore connection verified successfully!');
+                      triggerSaveNotification('Supabase connection verified successfully!');
                     } else {
                       triggerSaveNotification('Connection tested.');
                     }
@@ -1886,7 +1901,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             {/* Active Collections Overview */}
             <div className="space-y-3">
               <h4 className="font-display text-sm font-bold text-white">
-                Active Firestore Collections Managed
+                Supabase Tables Managed
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {[
@@ -1914,7 +1929,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
             {/* Security Rules Notice */}
             <div className="p-5 rounded-2xl bg-[#041331] border border-[#1766A5]/30 space-y-2">
               <span className="text-[11px] font-mono uppercase text-[#F5C542] block">
-                Security Rules (firestore.rules)
+                Row Level Security (RLS) Policies
               </span>
               <p className="text-xs text-slate-300">
                 Configured with zero-trust Attribute-Based Access Control (ABAC): Public visitors have read access to published services, portfolio, and perfume products, plus create access for valid contact inquiries. Only authenticated administrators can modify content or read customer inquiries.
